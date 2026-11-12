@@ -26,7 +26,9 @@ The user requested execution for one selected model, then installation of Vensim
 
 - Initialized local Git and created an explicit tracked-file allowlist for our own protocol, implementation and execution notes.
 - Raw private conversations, unpublished manuscripts, author checkpoint binaries, installers and environments are excluded.
-- A GitHub integration was offered, but its connection is not confirmed. No remote repository or successful upload is claimed.
+- GitHub CLI 2.104.0 was installed from the official release after SHA-256 verification. The user completed GitHub's device authorization flow.
+- Created and verified a private remote: https://github.com/youssefsaiid21-a11y/npe-reliability-research .
+- Initial progress commit `4a485ca9a6a2c75609b557acea12e8ebae29d065` was pushed and its remote main-branch hash matched the local commit.
 
 ## Required next steps
 
@@ -35,7 +37,7 @@ The user requested execution for one selected model, then installation of Vensim
 3. Establish a supported batch-simulation route and editable source for the selected perturbation. If the Mac route cannot do that, use an authorized compatible Windows environment or an explicitly approved and validated author-source port.
 4. Restore a compatible native Python inference environment only for the chosen validated route, retaining hashes/version locks and two-thread limits.
 5. Run source checks and the independent pilot before allocating main simulations. Keep failures and baseline mismatches visible.
-6. Once GitHub authentication is confirmed, create/use a private research repository and push the prepared local commit.
+6. Continue saving own research code/progress to the verified private GitHub repository; keep the tracked-file allowlist and exclusions in place.
 
 ## Public sources
 
