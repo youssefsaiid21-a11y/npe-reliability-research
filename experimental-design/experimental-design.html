@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A simple overview of the reviewed simulation design for NPE reliability in Random Walk, SEIRb and Generalized Bass models.">
+  <title>NPE reliability · Experimental design</title>
+  <style>
+    :root { --ink:#172b40; --muted:#607286; --blue:#0065bd; --pale:#edf5fc; --line:#dce5ee; --paper:#fff; --bg:#f5f7fa; --green:#23604b; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { max-width:1120px; margin:auto; padding:48px 28px 32px; }
+    header { padding-bottom:30px; border-bottom:1px solid var(--line); }
+    .eyebrow { font-size:12px; font-weight:750; letter-spacing:.13em; text-transform:uppercase; color:var(--blue); }
+    h1 { font-size:clamp(29px,4vw,44px); line-height:1.16; letter-spacing:-.035em; margin:14px 0; max-width:900px; }
+    .lead { max-width:800px; color:var(--muted); font-size:18px; margin:0 0 22px; }
+    .header-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
+    .status { font-size:13px; font-weight:650; color:var(--green); background:#e9f3ed; padding:7px 12px; border-radius:6px; }
+    .date { color:var(--muted); font-size:13px; margin-left:10px; }
+    button { font:inherit; font-size:13px; border:1px solid var(--line); background:white; color:var(--ink); border-radius:6px; padding:8px 13px; cursor:pointer; }
+    button:hover { border-color:var(--blue); color:var(--blue); }
+    a { color:var(--blue); text-underline-offset:3px; }
+    a:focus-visible,button:focus-visible,summary:focus-visible { outline:3px solid #81baf0; outline-offset:4px; }
+    section { margin-top:34px; }
+    h2 { font-size:22px; letter-spacing:-.025em; margin:0 0 8px; }
+    h3 { font-size:19px; line-height:1.3; margin:8px 0 12px; }
+    p { margin:0 0 12px; }
+    .sub { color:var(--muted); margin:0 0 18px; }
+    .panel { background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:24px; }
+    .question { font-size:21px; line-height:1.45; margin:0; max-width:900px; }
+    .flow { display:grid; grid-template-columns:1fr 28px 1fr 28px 1fr; align-items:center; gap:12px; margin:24px 0 18px; }
+    .flow-box { border:1px solid var(--line); border-radius:8px; padding:16px; text-align:center; background:white; }
+    .flow-box.highlight { border:2px solid var(--blue); background:var(--pale); }
+    .flow-box strong { display:block; font-size:16px; }
+    .flow-box span { display:block; font-size:13px; color:var(--muted); margin-top:4px; }
+    .arrow { color:var(--blue); text-align:center; font-size:25px; }
+    .note { color:var(--muted); font-size:14px; }
+    .models { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .model { background:white; border:1px solid var(--line); border-top:3px solid var(--blue); border-radius:8px; padding:22px; }
+    .number { font-size:12px; letter-spacing:.08em; color:var(--blue); font-weight:750; }
+    .model p { font-size:14px; }
+    .label { color:var(--muted); text-transform:uppercase; letter-spacing:.07em; font-size:10px; font-weight:750; margin:18px 0 6px; }
+    .levels { display:flex; flex-wrap:wrap; gap:6px; }
+    .level { background:#f0f4f8; border-radius:4px; padding:4px 8px; font-size:12px; font-variant-numeric:tabular-nums; }
+    .level.base { background:var(--pale); color:var(--blue); }
+    .target { border-top:1px solid var(--line); margin-top:18px; padding-top:12px; font-size:13px; }
+    details { margin-top:14px; }
+    summary { cursor:pointer; font-size:13px; color:var(--blue); font-weight:600; }
+    details p { margin-top:10px; }
+    .formula { font:12px/1.8 ui-monospace,SFMono-Regular,Consolas,monospace; background:#f5f7fa; border-radius:5px; padding:10px; overflow-wrap:anywhere; margin-top:10px; }
+    .steps { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+    .step { border-top:2px solid var(--line); padding-top:12px; }
+    .step strong { display:block; font-size:15px; margin-bottom:7px; }
+    .step p { font-size:14px; color:var(--muted); }
+    .step b { color:var(--ink); }
+    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    ul { padding-left:19px; margin:12px 0 0; }
+    li { margin:8px 0; font-size:14px; }
+    table { width:100%; border-collapse:collapse; font-size:14px; }
+    th,td { padding:12px 10px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); font-weight:700; }
+    td:first-child,th:first-child { padding-left:0; }
+    td:last-child { font-variant-numeric:tabular-nums; }
+    .important { border-left:3px solid var(--blue); background:var(--pale); padding:16px 20px; margin-top:18px; font-size:14px; }
+    .gate { background:#fffaf0; border:1px solid #eadcba; border-radius:8px; padding:22px 24px; }
+    .gate h2 { font-size:19px; }
+    .gate p,.gate li { font-size:14px; }
+    footer { border-top:1px solid var(--line); margin-top:32px; padding-top:20px; color:var(--muted); font-size:12px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+    footer a { margin-right:16px; }
+    @media(max-width:850px) { .models,.steps { grid-template-columns:1fr 1fr; } .models .model:last-child { grid-column:1/-1; } }
+    @media(max-width:580px) { main { padding:26px 16px; } .models,.steps,.two-col { grid-template-columns:1fr; } .models .model:last-child { grid-column:auto; } .flow { grid-template-columns:1fr; gap:8px; } .arrow { transform:rotate(90deg); line-height:1; } .panel { padding:19px; } .date { display:block; margin:8px 0 0; } th,td { padding:10px 6px; } }
+    @media print { @page { margin:15mm; } body { background:white; font-size:10pt; } main { padding:0; max-width:none; } h1 { font-size:26pt; } section { margin-top:20px; } button { display:none; } .model,.panel,.step,.gate { break-inside:avoid; } .models { grid-template-columns:repeat(3,1fr); } .two-col { grid-template-columns:1fr 1fr; } .steps { grid-template-columns:repeat(4,1fr); } .model { padding:14px; } .lead { font-size:12pt; } a { color:inherit; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">Research protocol · Simulation study</div>
+    <h1>How reliable is NPE when the model is wrong?</h1>
+    <p class="lead">Three dynamic models. One controlled change per model. The same trained estimator before and after the change.</p>
+    <div class="header-bottom">
+      <div><span class="status">Design reviewed · Experiments not yet run</span><span class="date">12 November 2026</span></div>
+      <button type="button" onclick="window.print()">Print / Save as PDF</button>
+    </div>
+  </header>
+
+  <section aria-labelledby="idea">
+    <h2 id="idea">The central comparison</h2>
+    <div class="flow" aria-label="Original and altered datasets are passed through the same frozen NPE estimator, then their inference results are compared.">
+      <div class="flow-box"><strong>Baseline + altered data</strong><span>Same parameter draw and aligned random streams</span></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="flow-box highlight"><strong>Same frozen NPE</strong><span>No retraining between conditions</span></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="flow-box"><strong>Compare inference</strong><span>Coverage · Width · Error · Failures</span></div>
+    </div>
+    <p class="note">Keep the prior, observation grid, measurement process, preprocessing and checkpoint fixed. The three model-specific departures are not equal units of severity.</p>
+  </section>
+
+  <section aria-labelledby="models">
+    <h2 id="models">What changes in each model?</h2>
+    <p class="sub">Each intervention must reproduce the exact original model at its baseline setting.</p>
+    <div class="models">
+      <article class="model">
+        <span class="number">01 / RANDOM WALK</span>
+        <h3>More persistent shocks</h3>
+        <p>Make process shocks correlated over time while preserving their marginal variance.</p>
+        <div class="label">Candidate process-shock correlation, ρ</div>
+        <div class="levels"><span class="level base">0 · baseline</span><span class="level">0.25</span><span class="level">0.50</span><span class="level">0.75</span></div>
+        <div class="label">Keep unchanged</div>
+        <p>Drift, initial state, shock scale, observation timing and measurement noise.</p>
+        <div class="target">Primary parameter: <strong>Drift</strong></div>
+        <details><summary>Mechanism and source condition</summary>
+          <p>Valid only if the source baseline uses independent Gaussian process shocks. Initialize the first used shock at its full marginal variance.</p>
+          <div class="formula">η₁ = σₚ ε₁<br>ηₜ = ρ ηₜ₋₁ + σₚ √(1 − ρ²) εₜ</div>
+          <p>If the source baseline already has persistence or another noise law, revise this module before running it.</p>
+        </details>
+      </article>
+      <article class="model">
+        <span class="number">02 / SEIRb</span>
+        <h3>A different response delay</h3>
+        <p>Change the shape of risk perception’s delay while preserving its mean duration.</p>
+        <div class="label">Number of delay stages, n</div>
+        <div class="levels"><span class="level base">1 · baseline</span><span class="level">2</span><span class="level">3</span><span class="level">4</span></div>
+        <div class="label">Keep unchanged</div>
+        <p>Mean perception delay, clinical dynamics, subsequent behavioral response and noise.</p>
+        <div class="target">Primary parameter: <strong>Transmission intensity β</strong></div>
+        <details><summary>Mechanism and source condition</summary>
+          <p>Replace a verified first-order perception lag with an n-stage chain, each stage having time constant Tₚ/n.</p>
+          <div class="formula">Mean delay = Tₚ<br>Delay-kernel variance = Tₚ² / n</div>
+          <p>Simply changing Tₚ within its estimated prior is not misspecification. Check source equations, initialization and solver stability first.</p>
+        </details>
+      </article>
+      <article class="model">
+        <span class="number">03 / GENERALIZED BASS</span>
+        <h3>Nonlinear imitation</h3>
+        <p>Change how existing adoption influences further adoption, rather than just changing q.</p>
+        <div class="label">Imitation curvature, a</div>
+        <div class="levels"><span class="level base">0 · baseline</span><span class="level">0.5</span><span class="level">1.0</span><span class="level">2.0</span></div>
+        <div class="label">Keep unchanged</div>
+        <p>Imitation strength at 50% adoption, marketing inputs, market potential and noise.</p>
+        <div class="target">Primary parameter: <strong>Imitation coefficient q</strong></div>
+        <details><summary>Mechanism and source condition</summary>
+          <p>For latent adoption fraction f = N/M, replace the linear imitation term qf with qhₐ(f).</p>
+          <div class="formula">hₐ(f) = f exp[a(f − 0.5)]<br>h₀(f) = f<br>hₐ(0.5) = 0.5</div>
+          <p>Preserve the source model’s boundary rules. Original-model estimates can compensate for the wrong functional form.</p>
+        </details>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="sequence">
+    <h2 id="sequence">Run in four stages</h2>
+    <div class="important" style="margin:14px 0 20px"><strong>Use the authors’ GitHub simulator.</strong> Start from the <a href="https://github.com/ali-akhavan89/SD_Neural_Estimation_Benchmarking" target="_blank" rel="noopener noreferrer">Rahmandad/Akhavan repository</a>: its Vensim models, simulation wrapper, original preprocessing and compatible checkpoints. Preserve that baseline and alter only the chosen mechanism in separate model copies. Compiled models need editable source for structural changes; verify the Vensim runtime on this Mac. The simulator has not been run for this design.</div>
+    <p class="sub">Suggested engineering order: Random Walk → Generalized Bass → SEIRb, subject to source availability.</p>
+    <div class="steps">
+      <div class="step"><strong>1. Verify the baseline</strong><p>Match simulator and checkpoint versions. Check equations, priors, grids, noise, preprocessing and numerical behavior.</p></div>
+      <div class="step"><strong>2. Run a small pilot</strong><p><b>50 paired dataset IDs per model</b>, across all four conditions. Measure failures, stability and actual runtime.</p></div>
+      <div class="step"><strong>3. Freeze and run</strong><p>Choose a fixed main sample size from the pilot. Freeze settings before generating independent main-test data.</p></div>
+      <div class="step"><strong>4. Explain the failures</strong><p>Compare coverage, width and recovery. Add predictive and reference analyses on prespecified subsets.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="scale">
+    <h2 id="scale">How much simulation?</h2>
+    <div class="panel">
+      <table>
+        <thead><tr><th scope="col">Component</th><th scope="col">Allocation</th><th scope="col">Total</th></tr></thead>
+        <tbody>
+          <tr><td>Pilot</td><td>3 models × 50 IDs × 4 conditions</td><td><strong>600 condition-datasets</strong></td></tr>
+          <tr><td>Main study</td><td>1,000–3,000 IDs per model × 4 conditions</td><td><strong>12,000–36,000 condition-datasets</strong></td></tr>
+          <tr><td>Posterior draws</td><td>Start at 2,000 per condition-dataset; check 10,000 on pilot cases</td><td>Freeze after stability checks</td></tr>
+          <tr><td>Optional predictive subset</td><td>3 models × 50 IDs × 2 conditions × 50 replicates</td><td>15,000 extra forward simulations</td></tr>
+          <tr><td>Initial reference subset</td><td>3 models × 12 IDs × 4 conditions, where feasible</td><td>144 reference fits</td></tr>
+        </tbody>
+      </table>
+      <p class="note" style="margin-top:16px">A dataset ID is one independent parameter draw and random-stream bundle, reused across the four conditions. More posterior draws do not replace independent dataset IDs.</p>
+      <details><summary>How the main sample size is chosen</summary>
+        <p>The frozen allocation rule uses conservative pilot bounds for common success and paired coverage discordance. It targets an approximate <strong>±3 percentage-point adjusted interval half-width</strong> for the three primary largest-departure contrasts.</p>
+        <p>Use a minimum of 1,000 and a cap of 3,000 IDs per model. If the required count exceeds the cap, declare precision-limited inference before the main run and report the achieved uncertainty. This is a precision target, not guaranteed power.</p>
+        <p>A material change to the simulator, intervention, checkpoint or sampling rules requires a new allocation pilot. The 600-dataset pilot total assumes one unchanged candidate per model.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="two-col" aria-label="Evaluation and efficiency">
+    <div class="panel">
+      <h2>What we measure</h2>
+      <ul>
+        <li><strong>Truth coverage:</strong> how often the 95% interval contains the generating parameter.</li>
+        <li><strong>Interval width:</strong> uncertainty relative to the original prior range.</li>
+        <li><strong>Recovery error:</strong> parameter-wise bias and RMSE.</li>
+        <li><strong>Failures:</strong> invalid simulation, preprocessing, inference or reference fits.</li>
+        <li><strong>Secondary diagnostics:</strong> predictive adequacy, compensation in other parameters, and reference-posterior agreement.</li>
+      </ul>
+      <p class="note" style="margin-top:14px">Keep parameters separate. Narrower intervals alone do not demonstrate better inference.</p>
+    </div>
+    <div class="panel">
+      <h2>Where we save compute</h2>
+      <ul>
+        <li>One misspecification axis and one frozen estimator per model.</li>
+        <li>A shared baseline and paired conditions for each dataset ID.</li>
+        <li>Disjoint pilot and main data; no outcome-dependent stopping.</li>
+        <li>Cache simulations, seeds, checkpoint hashes and per-ID results.</li>
+        <li>Keep expensive predictive and reference work on small subsets.</li>
+        <li>Benchmark actual costs first; use two CPU threads by default.</li>
+      </ul>
+      <p class="note" style="margin-top:14px">No large architecture × training-size × noise-type factorial in the core study.</p>
+    </div>
+  </section>
+
+  <div class="important"><strong>Failed cases stay visible.</strong> The primary paired coverage contrast uses IDs that succeed in all four conditions, so it describes that selected population. Always co-report failures and the all-ID probability of both successful inference and truth coverage.</div>
+
+  <section class="gate" aria-labelledby="gates">
+    <h2 id="gates">Before execution: resolve the source and baseline checks</h2>
+    <p>Model/checkpoint versions, parameter mappings, observation grids, noise laws and numerical behavior still need verification. The intervention at its baseline setting must reproduce the source model.</p>
+    <p><strong>Interpretation:</strong> use SBC for matched-model validation. Under misspecification, report robustness and truth coverage. An exact posterior under the wrong model can also miss the generating truth; a validated same-model reference is needed to isolate neural approximation error.</p>
+    <p class="note" style="margin-bottom:0">The independent reviewer found no unresolved material design flaws after three rounds. That is a design assessment, not evidence that the experiment has run or that these prerequisites have passed.</p>
+  </section>
+
+  <footer>
+    <div><a href="EXPERIMENTAL_DESIGN.md">Full protocol</a><a href="REVIEW_LOG.md">Review history</a><a href="planning.py">Allocation calculator</a></div>
+    <div>Standalone research overview · Works offline</div>
+  </footer>
+</main>
+</body>
+</html>

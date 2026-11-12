@@ -1,0 +1,24 @@
+# Track our research progress by explicit allowlist.
+/*
+!/.gitignore
+!/README.md
+!/experimental-design/
+!/execution/
+
+# Dependencies, credentials and local generated state never belong in Git.
+**/__pycache__/
+**/*.py[cod]
+**/.DS_Store
+**/.env
+**/.env.*
+**/.venv/
+**/cache/
+**/installers/
+**/browser-access/
+**/raw-chats/
+**/*.pickle
+**/*.dmg
+**/*.pkg
+
+# Raw manuscripts, author assets/checkpoints and local browser snapshots are
+# excluded by the root allowlist; cite their public sources instead.

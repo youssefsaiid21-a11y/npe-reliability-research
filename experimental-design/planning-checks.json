@@ -1,0 +1,11 @@
+{
+  "kind": "arithmetic checks only; not model validation",
+  "checks": {
+    "cp_all_success_lower_matches_closed_form": true,
+    "cp_zero_discordance_upper_matches_closed_form": true,
+    "minimum_allocation_respected": true,
+    "cap_label_respected": true,
+    "low_success_stops": true
+  },
+  "no_model_experiments_run": true
+}
