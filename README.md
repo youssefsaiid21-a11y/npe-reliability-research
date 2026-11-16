@@ -2,7 +2,7 @@
 
 An experimental design for evaluating how a frozen neural posterior estimator behaves when a dynamic model differs from the simulator used during training.
 
-**Status: protocol reviewed; experiments pending.** This repository contains a research protocol and a runnable sample-size planner. It does not yet contain new simulation, training, or posterior-inference results.
+**Status: internally reviewed research plan; experiments pending.** This repository contains a research protocol and a runnable sample-size planner. It does not yet contain new simulation, training, or posterior-inference results.
 
 ## Start here
 
@@ -11,7 +11,7 @@ An experimental design for evaluating how a frozen neural posterior estimator be
 | [Practical overview](experimental-design/START_HERE.md) | Models, perturbations, evaluation and execution order |
 | [Full protocol](experimental-design/EXPERIMENTAL_DESIGN.md) | Prespecified design, assumptions and analysis |
 | [HTML overview](experimental-design/experimental-design.html) | Download and open locally for a visual walkthrough |
-| [Review log](experimental-design/REVIEW_LOG.md) | Independent design review, revisions and limitations |
+| [Review log](experimental-design/REVIEW_LOG.md) | AI-assisted design review, revisions and limitations |
 | [Sample-size planner](experimental-design/planning.py) | Allocation arithmetic with hypothetical or supplied pilot counts |
 | [Runtime assessment](execution/2026-11-12-runtime-assessment.md) | Simulator compatibility and execution prerequisites |
 
