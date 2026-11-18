@@ -2,6 +2,8 @@
 /*
 !/.gitignore
 !/README.md
+!/AGENTS.md
+!/baseline-reproduction/
 !/experimental-design/
 !/execution/
 
@@ -22,3 +24,16 @@
 
 # Raw manuscripts, author assets/checkpoints and local browser snapshots are
 # excluded by the root allowlist; cite their public sources instead.
+
+# Baseline runtime and generated arrays stay local.
+/baseline-reproduction/results/
+/reproduction.nosync/
+**/*.npz
+**/*.npy
+
+# Explicit user restriction: benchmarking paper stays local.
+/Benchmarking_paper/
+/Benchmarking_paper.zip
+**/BenchmarkingEstimationDynamicModels_Final_withAuthors.pdf
+**/BenchmarkingAppendix_Final.pdf
+**/manuscript-extracted.txt

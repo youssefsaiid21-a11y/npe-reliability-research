@@ -1,0 +1,15 @@
+# Research workspace
+
+Save research code, evidence, reports, and results within this Research Project directory. Keep large Python environments and caches in reproduction.nosync to avoid iCloud Desktop sync overhead. Limit numerical work to two CPU threads by default while the user works. Preserve upstream source files; put adaptations in separate scripts. Distinguish checkpoint compatibility tests, cross-release experiments, baseline reproduction, and manuscript-level replication. Record seeds, dependencies, source revisions, and unresolved deviations.
+
+## Thesis progress and GitHub
+
+The user requests that thesis progress be saved to GitHub after meaningful completed changes. Use the existing `origin` remote and main branch; inspect changes, commit project-authored code/documentation and compact verified summaries, push, and verify the remote revision. Preserve uncommitted user work. Do not claim a push succeeded without checking.
+
+The remote is public. Do not commit private manuscripts, raw conversations, credentials, third-party checkpoints/model binaries, Python environments or large generated arrays. Maintain the tracked-file allowlist. Keep large local runtime assets in reproduction.nosync.
+
+Current priority: reproduce the authors' matched-model baseline results before running model-misspecification experiments. Start with Random Walk, then SEIRb and Generalized Bass. Keep saved-observation inference, fresh-data calibration, paper-table reproduction and new robustness experiments separate.
+
+## Explicit private-paper restriction
+
+Do not commit or push the benchmarking paper, appendix, paper ZIP archive, or extracted manuscript text. The user explicitly prohibited uploading the benchmarking paper on 2026-11-18. These files remain local, including when arranging VS Code files or preparing reproduction materials. Check the actual Git index before every thesis push; do not rely solely on ignore rules.

@@ -1,0 +1,19 @@
+{
+  "folders": [
+    {
+      "name": "Thesis",
+      "path": ".."
+    }
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "${workspaceFolder}/reproduction.nosync/.venv/bin/python",
+    "files.watcherExclude": {
+      "**/reproduction.nosync/**": true,
+      "**/reproduction/.venv/**": true
+    },
+    "search.exclude": {
+      "**/reproduction.nosync/**": true,
+      "**/reproduction/.venv/**": true
+    }
+  }
+}

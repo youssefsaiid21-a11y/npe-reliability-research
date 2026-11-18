@@ -1,0 +1,173 @@
+{
+  "repository": "https://github.com/ali-akhavan89/SD_Neural_Estimation_Benchmarking",
+  "commit": "d74a866f0476c07e93d786d297f90c0706281c33",
+  "files": [
+    {
+      "path": "GeneralizedBass.voc",
+      "bytes": 689,
+      "git_blob_sha1": "59d1d67770db79a29078b39bca24b6f242326490"
+    },
+    {
+      "path": "GeneralizedBass.vpmx",
+      "bytes": 560313,
+      "git_blob_sha1": "09046e0e75c2f4a52383cfe0e21e9ab1874d23b3"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1070,
+      "git_blob_sha1": "aee9756645ebc052671e78e86e8dfae2f3d7ab8d",
+      "sha256": "827634fd6d218e6aa0bca47d6cd010912976a037e077630d3b32ff9a9dc1528d"
+    },
+    {
+      "path": "Main.ipynb",
+      "bytes": 1755109,
+      "git_blob_sha1": "c8b353a945c436bec5d6e4bfbe4f6b7df6983255",
+      "sha256": "68164d26dde0061a449006745be5fb379d58886400d3f2dd28e78e39440d8768"
+    },
+    {
+      "path": "RandomWalk3.voc",
+      "bytes": 606,
+      "git_blob_sha1": "0a67a970c20483b7265f275aaae3a3f79e307c3a",
+      "sha256": "4b9fe59fdbaf15de2a3b350fbc9e3c0acf6b67916e65134c5d49a66a5388efc7"
+    },
+    {
+      "path": "RandomWalk3.vpmx",
+      "bytes": 18652,
+      "git_blob_sha1": "7c484188b160cdf58807b45d51ff39b5b688dea2"
+    },
+    {
+      "path": "SEIRb.voc",
+      "bytes": 945,
+      "git_blob_sha1": "017c2f29e90f4589712e63accd0a25143920b8cc",
+      "sha256": "0393022ee3b5e2f424e16f2b97d58906c421a87515d3a459d21dca004fa17483"
+    },
+    {
+      "path": "SEIRbNosubs.vpmx",
+      "bytes": 42855,
+      "git_blob_sha1": "f10254ee8fdc48d22dbcae6ff40a27b1f30e75f2"
+    },
+    {
+      "path": "density_estimators/GB_1r_NPE_100k_NN.pickle",
+      "bytes": 1654390,
+      "git_blob_sha1": "e75adcfffccff4db9b7caba4d043d68a6bb71322"
+    },
+    {
+      "path": "density_estimators/GB_1r_NPE_10k_NN.pickle",
+      "bytes": 1654390,
+      "git_blob_sha1": "baa685cd6b59d7203ed2dbd3a22d1c8453decdb6"
+    },
+    {
+      "path": "density_estimators/GB_1r_NPE_1k_NN.pickle",
+      "bytes": 1654390,
+      "git_blob_sha1": "e1731fcf43708a6a64e76bbc12acfdd317ea3653"
+    },
+    {
+      "path": "density_estimators/RW_1r_NPE_100k_NN.pickle",
+      "bytes": 1547574,
+      "git_blob_sha1": "c3fb8685cec64e3b16a4eb25afd2eb9dec7dd6f1",
+      "sha256": "39a3e650192fd7bcfa038d65bf41646aa2a0ae482e54aca10ee0c0be678512b5"
+    },
+    {
+      "path": "density_estimators/RW_1r_NPE_10k_NN.pickle",
+      "bytes": 1547574,
+      "git_blob_sha1": "186bbdd1627b6554d140763824f6859b8a8c4fd8",
+      "sha256": "9e7bedc2192528198a4ae90852999a7c8f8d721dc0fb706f90dd3f794ffd3ea8"
+    },
+    {
+      "path": "density_estimators/RW_1r_NPE_1k_NN.pickle",
+      "bytes": 1547470,
+      "git_blob_sha1": "a650bc3ffed0eade74eeae0db024e0a18f007516",
+      "sha256": "2cb3137c347688212e9df2b26f99e5d6f6ca137f7c93205519e81b6e969c4dcb"
+    },
+    {
+      "path": "density_estimators/SEIRb_1r_NPE_100k_NN.pickle",
+      "bytes": 1729026,
+      "git_blob_sha1": "b06253df5bccf933b7df9d96da8ba1685b0948a6",
+      "sha256": "336beaa0c452d85e6d0fc4ee9dcfb66fb321738252ebe00b014dec19c2af448b"
+    },
+    {
+      "path": "density_estimators/SEIRb_1r_NPE_10k_NN.pickle",
+      "bytes": 1729026,
+      "git_blob_sha1": "b452c0eb37afddaa1a28c17dd34db579dc2f1266",
+      "sha256": "11724c0767f6c18acadc94d045a6ab426d687bd183ac1d9e61be95101fcdb25f"
+    },
+    {
+      "path": "density_estimators/SEIRb_1r_NPE_1k_NN.pickle",
+      "bytes": 1729026,
+      "git_blob_sha1": "d8dc61eda05f037d1f52f968d603ef57854b8168",
+      "sha256": "fcb104162ce59299331bac88e7cba672d35185250cf10d5508c466404524c632"
+    },
+    {
+      "path": "setup_functions/__init__.py",
+      "bytes": 121,
+      "git_blob_sha1": "afbf92e9e2ef35d3f323947b0ed398d455e7ad10",
+      "sha256": "64366ae5d60ecacf57fea4c0064267ddb947d8341edbe83d65627fd52bb8930e"
+    },
+    {
+      "path": "setup_functions/classes.py",
+      "bytes": 6114,
+      "git_blob_sha1": "85dec46f7d1566060080446d4e8ffc70fcb22c5a",
+      "sha256": "2126847511436a994f3fccc1d908ed9ecd2ae3567e1ab04be370619ff0f1ba56"
+    },
+    {
+      "path": "setup_functions/plots.py",
+      "bytes": 40762,
+      "git_blob_sha1": "70d2151c484b1081fe1e87e58a3eeb932f739ca4",
+      "sha256": "ded5ed2b50da823d5c73064dbde38a0a23aac60af1daa83b0cce7e708e04622b"
+    },
+    {
+      "path": "setup_functions/pre_experiment.py",
+      "bytes": 9223,
+      "git_blob_sha1": "db74c6588375d08d9ab51eda15bd6beaa89194cd",
+      "sha256": "cb1933b3f4ae4e3a75725e5c7363b1f21db8732df8e60c7d563934da5e95312d"
+    },
+    {
+      "path": "setup_functions/prior.py",
+      "bytes": 1354,
+      "git_blob_sha1": "3e51e2997ce747649ccc0fbd3606dd3dd102d7a7",
+      "sha256": "bcca599d8781f3caca01b17197e450685fc802085ef90462388aceb412dabae6"
+    },
+    {
+      "path": "setup_functions/run_analysis.py",
+      "bytes": 10435,
+      "git_blob_sha1": "337d48766b9eafa9d0d958071f2773a25ea008ad",
+      "sha256": "59f728415cd0318d0bbac23ea5e25b9a12b9f8e5808af734a3b9ffac769651e3"
+    },
+    {
+      "path": "setup_functions/run_experiments.py",
+      "bytes": 3945,
+      "git_blob_sha1": "f056cada4a419abbc7cfe37c394220f77a075b42",
+      "sha256": "c6daf78159fead94557e1c336aa906182b5d7c235afab29571c4988e7ecaf8ec"
+    },
+    {
+      "path": "setup_functions/run_training.py",
+      "bytes": 20303,
+      "git_blob_sha1": "0f3804bdf8c82132196d4d2d6dc99c31b564d10a",
+      "sha256": "5fc0ff663ef68d4aa8fb97f88c4e49e29e87b8df330df6ce80ad8b25f8f0b8a6"
+    },
+    {
+      "path": "setup_functions/true_params/MG_true_params_tensor.py",
+      "bytes": 52973,
+      "git_blob_sha1": "d0461f69e20f92ef107640ca81759bd6dd55c157",
+      "sha256": "50f8524b4f45f674f773b34315da60153a77624ab30d228c2006ac0c2979434e"
+    },
+    {
+      "path": "setup_functions/true_params/SEIRb_true_params_tensor.py",
+      "bytes": 28318,
+      "git_blob_sha1": "54afdcf3d66db85cffba3d8a404ea6b07db7d33a",
+      "sha256": "3f5b86aebf1cae81119f38c8dfb49832b5dca24b1fd4b0318c250b9fc8943e5e"
+    },
+    {
+      "path": "setup_functions/validation_calculations.py",
+      "bytes": 13722,
+      "git_blob_sha1": "517095491dc3f74bad748f3da3f6245034ab7178",
+      "sha256": "861fe3ef2be1ce5b8967f1edd28aa1713c7c21141b00beafec72400004c4bfad"
+    },
+    {
+      "path": "setup_functions/vensim_simulation_model.py",
+      "bytes": 6318,
+      "git_blob_sha1": "3d117a4eac5bae579730b81b3423a1f2b5e2ec76",
+      "sha256": "841655c94180fa227d7a976010929704054b8dbb93ecba3b22be1c2d9c8f6510"
+    }
+  ]
+}

@@ -46,3 +46,7 @@ Runtime/source compatibility, editable equations and matched-model calibration m
 ## Scope
 
 This repository contains project-authored protocol material, planning code and progress notes. Private conversations, unpublished source manuscripts, third-party checkpoints, installers, credentials and large environments are excluded. Historical assessments retain their original dates and do not establish that an experiment has since run.
+
+## Current execution priority
+
+Reproduce the matched-model baseline before misspecification experiments. Start with the [baseline reproduction setup](baseline-reproduction/README.md) and [execution plan](baseline-reproduction/REPRODUCTION_PLAN.md). The benchmarking paper, appendix, archive and extracted manuscript text remain local and are not tracked.

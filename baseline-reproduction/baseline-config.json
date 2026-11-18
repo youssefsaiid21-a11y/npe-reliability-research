@@ -1,0 +1,20 @@
+{
+  "stage": "matched-model reproduction before misspecification",
+  "first_model": "RandomWalk",
+  "next_models": [
+    "SEIRb",
+    "GeneralizedBass"
+  ],
+  "source_commit": "d74a866f0476c07e93d786d297f90c0706281c33",
+  "checkpoint_budgets": [
+    "1k",
+    "10k",
+    "100k"
+  ],
+  "posterior_draws_per_original_observation": 10000,
+  "seed": 42,
+  "cpu_threads": 2,
+  "aggregate_validation_datasets": 500,
+  "aggregate_status": "blocked pending source-compatible simulator and validation-selection audit",
+  "simulation_policy": "Use author simulator and original preprocessing; no silent textbook substitute."
+}
