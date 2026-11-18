@@ -23,3 +23,7 @@ The first executable milestone is hash-verified original-observation inference f
 `baseline-reproduction/original-observation-summary.json` records our fresh native run. Original inputs, posterior arrays and our generated comparison image remain local under `reproduction.nosync/results/original-observation`. The figure was generated from our rerun and does not copy or load a paper figure. The benchmarking paper and extracted manuscript remain excluded from Git.
 
 VS Code is open with the thesis workspace. The Python-environment extension installed, but the Python/debugger/Pylance bundle could not finish because `ms-python.gallery.vsassets.io` failed DNS resolution. Native command-line inference works. Manual workspace tasks provide source verification, inference and plotting without requiring those optional editor extensions; no task runs automatically on folder open.
+
+## Code-reading clarification: prior provenance
+
+A subsequent code walkthrough identified a prior/support distinction. Our saved-example run used BoxUniform support reconstructed from VOC limits. The pinned notebook calls `run_training()`, which constructs a Gaussian prior; another experiment path uses BoxUniform, and the simulator adjusts parameters before running. The checkpoint training lineage is not yet certified. Numerical draws and parameter summaries remain unchanged; metadata and documentation now explicitly describe the bounded-support compatibility check. This does not establish a prior-matched paper baseline.

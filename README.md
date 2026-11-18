@@ -50,3 +50,5 @@ This repository contains project-authored protocol material, planning code and p
 ## Current execution priority
 
 Reproduce the matched-model baseline before misspecification experiments. Start with the [baseline reproduction setup](baseline-reproduction/README.md) and [execution plan](baseline-reproduction/REPRODUCTION_PLAN.md). The benchmarking paper, appendix, archive and extracted manuscript text remain local and are not tracked.
+
+For a file-by-file explanation and the unresolved prior/support distinction, read the [codebase guide](baseline-reproduction/CODEBASE_GUIDE.md).

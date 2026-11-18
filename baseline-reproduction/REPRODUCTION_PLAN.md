@@ -14,7 +14,10 @@ Load the three original Random Walk checkpoints (1k/10k/100k) on CPU, preserving
 
 This is a compatibility/inference check on one saved example. It does not establish aggregate coverage or reproduce a paper table.
 
-## 3. Establish the original forward simulator
+## 3. Establish the original prior and forward simulator
+
+Resolve the prior/support distinction first: our compatibility harness uses VOC-box support, but the notebook’s `run_training()` path constructs a Gaussian prior. Other source paths use a box prior. Determine the saved estimators’ training lineage and the role of clipping before describing our wrapper as a matched prior. Do not change the recorded numerical samples while investigating this discrepancy.
+
 
 Validate the checkpoint-compatible compiled RandomWalk3 model and the authors' preprocessing. Vensim PLE is installed on this Mac; its presence does not make the authors' Windows DLL/venpy batch wrapper available on macOS. A supported Windows Vensim runtime is the direct route for that wrapper. An author-source Python port is a separate route requiring documented equation, noise and numerical equivalence checks before use.
 

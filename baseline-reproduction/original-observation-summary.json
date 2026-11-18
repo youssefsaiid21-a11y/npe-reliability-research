@@ -196,5 +196,7 @@
     "One saved example is not an empirical coverage study.",
     "The original simulator has not been run by this command.",
     "CPU/runtime changes do not guarantee identical random draws to the published run."
-  ]
+  ],
+  "posterior_support_policy": "BoxUniform reconstructed from VOC bounds",
+  "upstream_prior_distribution_match": "unverified: run_training constructs a Gaussian prior"
 }

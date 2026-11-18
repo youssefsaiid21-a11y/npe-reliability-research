@@ -1,4 +1,4 @@
-"""Rerun the authors' saved RW example. This is not aggregate paper replication."""
+"""Check the saved RW example using VOC-box support; prior matching remains unresolved."""
 import argparse
 import hashlib
 import json
@@ -87,7 +87,7 @@ def main():
         if tuple(draws.shape) != (args.draws, len(names)) or not torch.isfinite(draws).all():
             raise RuntimeError('Invalid posterior samples')
         if not ((draws >= low_t) & (draws <= high_t)).all():
-            raise RuntimeError('Posterior samples outside original prior')
+            raise RuntimeError('Posterior samples outside configured VOC support')
         samples = draws.numpy()
         quantiles = np.quantile(samples, [0.025, 0.5, 0.975], axis=0)
         arrays['samples_' + budget] = samples
@@ -100,7 +100,7 @@ def main():
                                   'truth_inside_interval_for_this_example': bool(quantiles[0, i] <= truth[i] <= quantiles[2, i])}
                                  for i, name in enumerate(names)]}
         records.append(record)
-        print(budget, 'passed:', args.draws, 'finite in-prior samples;', round(elapsed, 3), 'seconds', flush=True)
+        print(budget, 'passed:', args.draws, 'finite samples within configured VOC support;', round(elapsed, 3), 'seconds', flush=True)
     arrays['original_observation_and_features'] = reference_x.numpy()
     arrays['original_truth'] = reference_truth.numpy()
     artifact = directory / 'posterior-samples.npz'
@@ -114,6 +114,8 @@ def main():
                'packages': {name: importlib.metadata.version(name) for name in ['torch', 'sbi', 'numpy', 'scipy']},
                'parameter_order': names, 'original_input_shape': list(reference_x.shape),
                'source_hash_checks': True,
+               'posterior_support_policy': 'BoxUniform reconstructed from VOC bounds',
+               'upstream_prior_distribution_match': 'unverified: run_training constructs a Gaussian prior',
                'runtime_adapters': ['CUDA tensor storage remapped to CPU', 'evaluation mode',
                                     'two CPU threads', 'interactive plotting disabled for summary check'],
                'checkpoints': records,

@@ -1,6 +1,6 @@
 # Matched-model baseline reproduction
 
-Start with [the reproduction plan](REPRODUCTION_PLAN.md). Random Walk is the first execution target; SEIRb and Generalized Bass follow after source/runtime validation. Earlier results recorded on another Mac are historical evidence, not results from this setup.
+Read the [codebase guide](CODEBASE_GUIDE.md) for a detailed explanation, then [the reproduction plan](REPRODUCTION_PLAN.md). Random Walk is the first execution target; SEIRb and Generalized Bass follow after source/runtime validation. Earlier results recorded on another Mac are historical evidence, not results from this setup.
 
 ## Environment
 
@@ -22,7 +22,7 @@ Open `Thesis.code-workspace` in VS Code to use the configured local thesis inter
 
 ## Verified on this Mac
 
-On 18 November 2026, the native ARM64 environment loaded all three original RW checkpoints and produced 10,000 valid in-prior posterior draws per checkpoint. Original-feature recomputation passed with maximum absolute error 0.0000057221. See [the compact run summary](original-observation-summary.json) for versions, seed, timing and parameter intervals.
+On 18 November 2026, the native ARM64 environment loaded all three original RW checkpoints and produced 10,000 valid draws within the VOC-box support imposed by our harness per checkpoint. Original-feature recomputation passed with maximum absolute error 0.0000057221. See [the compact run summary](original-observation-summary.json) for versions, seed, timing and parameter intervals.
 
 This is a single saved-example inference rerun. No new training or forward simulations were performed, and aggregate paper replication remains pending.
 
@@ -37,3 +37,7 @@ The generated arrays and image stay under the ignored `reproduction.nosync/resul
 ## Run inside VS Code
 
 Use **Terminal → Run Task** and select a `Thesis:` task, or use the explicit terminal commands above. The tasks are manual and use the tested local Python executable. The Python/debugger editor extension download encountered a Marketplace DNS error; this does not prevent the workspace tasks or command-line runs.
+
+## Prior alignment remains unresolved
+
+Our current wrapper uses a bounded uniform support from the `.voc` limits. The authors’ notebook entry point constructs a Gaussian prior, while another source path uses a box prior. The saved checkpoint’s exact training provenance still needs to be established. The completed run is a bounded-support compatibility check, not a certified match to every published inference setting. See the [guide’s prior explanation](CODEBASE_GUIDE.md#10-the-unresolved-prior-distinction).
