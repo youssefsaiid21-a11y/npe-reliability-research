@@ -1,7 +1,7 @@
 target_id,model,scope,source,training_budget,validation_datasets,posterior_draws,status
-RW-original-1k,RandomWalk,saved observation,pinned public checkpoint,1000,1,10000,pending native inference check
-RW-original-10k,RandomWalk,saved observation,pinned public checkpoint,10000,1,10000,pending native inference check
-RW-original-100k,RandomWalk,saved observation,pinned public checkpoint,100000,1,10000,pending native inference check
+RW-original-1k,RandomWalk,saved observation,pinned public checkpoint,1000,1,10000,native saved-example inference passed
+RW-original-10k,RandomWalk,saved observation,pinned public checkpoint,10000,1,10000,native saved-example inference passed
+RW-original-100k,RandomWalk,saved observation,pinned public checkpoint,100000,1,10000,native saved-example inference passed
 RW-aggregate,RandomWalk,fresh matched-model validation,pinned notebook settings pending paper-target audit,multiple,500,10000,blocked on original simulator and target definitions
 SEIRb-aggregate,SEIRb,fresh matched-model validation,pinned source pending compatibility audit,multiple,500,10000,not started
 GB-aggregate,GeneralizedBass,fresh matched-model validation,pinned source pending compatibility audit,multiple,500,10000,not started

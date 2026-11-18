@@ -4,13 +4,13 @@ Start with [the reproduction plan](REPRODUCTION_PLAN.md). Random Walk is the fir
 
 ## Environment
 
-This thesis uses an isolated native Python 3.12 environment. The general-purpose `python3` installation is separate. Initial compatibility pins use PyTorch 2.6.0 and sbi 0.23.3; the recovered historical Intel runtime used a different PyTorch version. The exact environment is recorded after installation.
+This thesis uses an isolated native Python 3.12 environment. The general-purpose `python3` installation is separate. Initial compatibility pins use PyTorch 2.6.0 and sbi 0.23.3; the recovered historical Intel runtime used a different PyTorch version. The exact installed native environment is recorded in `environment-lock.txt`; restore it with the sync command below.
 
 From the repository root:
 
 ```sh
 uv venv --python 3.12 reproduction.nosync/.venv
-uv pip install --python reproduction.nosync/.venv/bin/python -r baseline-reproduction/requirements.in
+uv pip sync --python reproduction.nosync/.venv/bin/python baseline-reproduction/environment-lock.txt
 python3 baseline-reproduction/prepare_source.py --model RW
 reproduction.nosync/.venv/bin/python baseline-reproduction/inspect_checkpoint.py
 reproduction.nosync/.venv/bin/python baseline-reproduction/run_original_observation.py
@@ -19,3 +19,17 @@ reproduction.nosync/.venv/bin/python baseline-reproduction/run_original_observat
 Only hash-verified artifacts from the pinned author repository are loaded. Checkpoints are Python pickles and must not be replaced with untrusted downloads. No upstream training or Vensim wrapper is automatically executed by these commands.
 
 Open `Thesis.code-workspace` in VS Code to use the configured local thesis interpreter. GitHub saves contain our scripts, configuration and compact evidence; local inputs, environments and posterior arrays are excluded.
+
+## Verified on this Mac
+
+On 18 November 2026, the native ARM64 environment loaded all three original RW checkpoints and produced 10,000 valid in-prior posterior draws per checkpoint. Original-feature recomputation passed with maximum absolute error 0.0000057221. See [the compact run summary](original-observation-summary.json) for versions, seed, timing and parameter intervals.
+
+This is a single saved-example inference rerun. No new training or forward simulations were performed, and aggregate paper replication remains pending.
+
+To create a local figure from our generated samples:
+
+```sh
+reproduction.nosync/.venv/bin/python baseline-reproduction/plot_original_observation.py
+```
+
+The generated arrays and image stay under the ignored `reproduction.nosync/results/original-observation` directory. They are not the benchmarking paper or its figures.

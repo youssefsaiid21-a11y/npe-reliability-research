@@ -2,7 +2,7 @@
 
 An experimental design for evaluating how a frozen neural posterior estimator behaves when a dynamic model differs from the simulator used during training.
 
-**Status: internally reviewed research plan; experiments pending.** This repository contains a research protocol and a runnable sample-size planner. It does not yet contain new simulation, training, or posterior-inference results.
+**Status: internally reviewed research plan; experiments pending.** This repository contains a research protocol and a runnable sample-size planner. A native CPU saved-example inference rerun is recorded under `baseline-reproduction/`; aggregate replication, new forward simulations, training and misspecification experiments remain pending.
 
 ## Start here
 

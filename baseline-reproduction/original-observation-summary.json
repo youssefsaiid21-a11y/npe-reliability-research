@@ -1,0 +1,200 @@
+{
+  "status": "original_saved_observation_inference_passed",
+  "aggregate_paper_reproduction": "not established",
+  "forward_simulations_run": 0,
+  "training_runs": 0,
+  "created_utc": "2026-11-18T12:10:00.138523+00:00",
+  "source_commit": "d74a866f0476c07e93d786d297f90c0706281c33",
+  "seed": 42,
+  "cpu_threads": 2,
+  "architecture": "arm64",
+  "python_version": "3.12.16",
+  "packages": {
+    "torch": "2.6.0",
+    "sbi": "0.23.3",
+    "numpy": "1.26.4",
+    "scipy": "1.12.0"
+  },
+  "parameter_order": [
+    "Drift",
+    "InitS",
+    "NoiseStd",
+    "MeasStd"
+  ],
+  "original_input_shape": [
+    1,
+    151,
+    1
+  ],
+  "source_hash_checks": true,
+  "runtime_adapters": [
+    "CUDA tensor storage remapped to CPU",
+    "evaluation mode",
+    "two CPU threads",
+    "interactive plotting disabled for summary check"
+  ],
+  "checkpoints": [
+    {
+      "checkpoint": "1k",
+      "posterior_draws": 10000,
+      "sampling_seconds": 0.08485008400748484,
+      "manual_summary_max_abs_difference": 5.7220458984375e-06,
+      "parameters": [
+        {
+          "name": "Drift",
+          "truth": -0.250919762305275,
+          "mean": -0.15349271893501282,
+          "median": -0.15335854142904282,
+          "equal_tailed_95_interval": [
+            -0.23843683674931526,
+            -0.07032920755445958
+          ],
+          "truth_inside_interval_for_this_example": false
+        },
+        {
+          "name": "InitS",
+          "truth": 9.50714306409916,
+          "mean": 5.7373433113098145,
+          "median": 5.692615032196045,
+          "equal_tailed_95_interval": [
+            2.9984251260757446,
+            8.781380057334898
+          ],
+          "truth_inside_interval_for_this_example": false
+        },
+        {
+          "name": "NoiseStd",
+          "truth": 0.36599697090570255,
+          "mean": 0.21278607845306396,
+          "median": 0.20896340906620026,
+          "equal_tailed_95_interval": [
+            0.02800224013626576,
+            0.42390398755669584
+          ],
+          "truth_inside_interval_for_this_example": true
+        },
+        {
+          "name": "MeasStd",
+          "truth": 0.2993292420985183,
+          "mean": 0.19417952001094818,
+          "median": 0.1896781250834465,
+          "equal_tailed_95_interval": [
+            0.03368249349296093,
+            0.3762115724384784
+          ],
+          "truth_inside_interval_for_this_example": true
+        }
+      ]
+    },
+    {
+      "checkpoint": "10k",
+      "posterior_draws": 10000,
+      "sampling_seconds": 0.07996904200990684,
+      "manual_summary_max_abs_difference": 5.7220458984375e-06,
+      "parameters": [
+        {
+          "name": "Drift",
+          "truth": -0.250919762305275,
+          "mean": -0.13135872781276703,
+          "median": -0.13434257358312607,
+          "equal_tailed_95_interval": [
+            -0.19954853355884553,
+            -0.05002498794347048
+          ],
+          "truth_inside_interval_for_this_example": false
+        },
+        {
+          "name": "InitS",
+          "truth": 9.50714306409916,
+          "mean": 7.2126383781433105,
+          "median": 7.328155755996704,
+          "equal_tailed_95_interval": [
+            3.917862850427628,
+            9.72887101173401
+          ],
+          "truth_inside_interval_for_this_example": true
+        },
+        {
+          "name": "NoiseStd",
+          "truth": 0.36599697090570255,
+          "mean": 0.24722367525100708,
+          "median": 0.24798572808504105,
+          "equal_tailed_95_interval": [
+            0.06620832346379757,
+            0.42080843150615693
+          ],
+          "truth_inside_interval_for_this_example": true
+        },
+        {
+          "name": "MeasStd",
+          "truth": 0.2993292420985183,
+          "mean": 0.32119911909103394,
+          "median": 0.3170715570449829,
+          "equal_tailed_95_interval": [
+            0.19358400553464888,
+            0.46759582906961433
+          ],
+          "truth_inside_interval_for_this_example": true
+        }
+      ]
+    },
+    {
+      "checkpoint": "100k",
+      "posterior_draws": 10000,
+      "sampling_seconds": 0.1285951670142822,
+      "manual_summary_max_abs_difference": 5.7220458984375e-06,
+      "parameters": [
+        {
+          "name": "Drift",
+          "truth": -0.250919762305275,
+          "mean": -0.22456039488315582,
+          "median": -0.22494592517614365,
+          "equal_tailed_95_interval": [
+            -0.28961662724614146,
+            -0.15742512047290802
+          ],
+          "truth_inside_interval_for_this_example": true
+        },
+        {
+          "name": "InitS",
+          "truth": 9.50714306409916,
+          "mean": 8.9789457321167,
+          "median": 9.144661903381348,
+          "equal_tailed_95_interval": [
+            7.0245347142219545,
+            9.958292126655579
+          ],
+          "truth_inside_interval_for_this_example": true
+        },
+        {
+          "name": "NoiseStd",
+          "truth": 0.36599697090570255,
+          "mean": 0.2615628242492676,
+          "median": 0.2621675282716751,
+          "equal_tailed_95_interval": [
+            0.06245923507958651,
+            0.4498818807303904
+          ],
+          "truth_inside_interval_for_this_example": true
+        },
+        {
+          "name": "MeasStd",
+          "truth": 0.2993292420985183,
+          "mean": 0.2952089309692383,
+          "median": 0.2923675626516342,
+          "equal_tailed_95_interval": [
+            0.23191971257328986,
+            0.37726508677005766
+          ],
+          "truth_inside_interval_for_this_example": true
+        }
+      ]
+    }
+  ],
+  "local_array_sha256": "6debc4e175a9cc827c7f60dca7032d0e2082e7ab97f8b26c5ad2af0cd5f278e9",
+  "limitations": [
+    "One saved example is not an empirical coverage study.",
+    "The original simulator has not been run by this command.",
+    "CPU/runtime changes do not guarantee identical random draws to the published run."
+  ]
+}

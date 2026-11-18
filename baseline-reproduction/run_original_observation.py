@@ -13,6 +13,8 @@ os.environ.setdefault('MPLBACKEND', 'Agg')
 os.environ['OMP_NUM_THREADS'] = '2'
 os.environ['MKL_NUM_THREADS'] = '2'
 os.environ['OPENBLAS_NUM_THREADS'] = '2'
+os.environ['VECLIB_MAXIMUM_THREADS'] = '2'
+os.environ['NUMEXPR_NUM_THREADS'] = '2'
 BASE = Path(__file__).resolve().parent
 
 
@@ -53,7 +55,7 @@ def main():
             if tuple(map(float, config['venParameters'][name])) != (lo, hi):
                 raise RuntimeError('Checkpoint/VOC prior mismatch: ' + name)
         x = config['x_o'].detach().cpu().float()
-        truth = config['true_parameter'].detach().cpu().reshape(-1).float()
+        truth = config['true_parameter'].detach().cpu().reshape(-1)
         if x.ndim != 3 or x.shape[0] != 1 or x.shape[2] != 1:
             raise RuntimeError('Unexpected saved observation shape: ' + str(x.shape))
         if truth.shape != low_t.shape or not torch.isfinite(truth).all():
@@ -74,6 +76,10 @@ def main():
             reference_x, reference_truth = x.clone(), truth.clone()
         elif not torch.equal(reference_x, x) or not torch.equal(reference_truth, truth):
             raise RuntimeError('Checkpoints do not contain the same original example')
+        # The original preprocessing module seeds RNGs when imported. Reset
+        # after imports so a user-supplied seed is honored for every checkpoint.
+        torch.manual_seed(args.seed)
+        np.random.seed(args.seed)
         start = time.perf_counter()
         posterior = DirectPosterior(posterior_estimator=network, prior=prior, device='cpu')
         draws = posterior.sample((args.draws,), x=x, show_progress_bars=False).detach().cpu()
