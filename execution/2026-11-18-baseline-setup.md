@@ -22,4 +22,4 @@ The first executable milestone is hash-verified original-observation inference f
 
 `baseline-reproduction/original-observation-summary.json` records our fresh native run. Original inputs, posterior arrays and our generated comparison image remain local under `reproduction.nosync/results/original-observation`. The figure was generated from our rerun and does not copy or load a paper figure. The benchmarking paper and extracted manuscript remain excluded from Git.
 
-VS Code Python support, debugger and Python-environment extensions are installed. The optional Pylance bundle download did not finish; its stalled CLI installer was stopped without closing VS Code. The configured Python interpreter and command-line reproduction run work independently of Pylance.
+VS Code is open with the thesis workspace. The Python-environment extension installed, but the Python/debugger/Pylance bundle could not finish because `ms-python.gallery.vsassets.io` failed DNS resolution. Native command-line inference works. Manual workspace tasks provide source verification, inference and plotting without requiring those optional editor extensions; no task runs automatically on folder open.

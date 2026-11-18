@@ -15,5 +15,40 @@
       "**/reproduction.nosync/**": true,
       "**/reproduction/.venv/**": true
     }
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Thesis: verify pinned RW source",
+        "type": "process",
+        "command": "${workspaceFolder}/reproduction.nosync/.venv/bin/python",
+        "args": [
+          "${workspaceFolder}/baseline-reproduction/prepare_source.py",
+          "--model",
+          "RW",
+          "--offline"
+        ],
+        "problemMatcher": []
+      },
+      {
+        "label": "Thesis: rerun original RW checkpoints",
+        "type": "process",
+        "command": "${workspaceFolder}/reproduction.nosync/.venv/bin/python",
+        "args": [
+          "${workspaceFolder}/baseline-reproduction/run_original_observation.py"
+        ],
+        "problemMatcher": []
+      },
+      {
+        "label": "Thesis: plot local checkpoint results",
+        "type": "process",
+        "command": "${workspaceFolder}/reproduction.nosync/.venv/bin/python",
+        "args": [
+          "${workspaceFolder}/baseline-reproduction/plot_original_observation.py"
+        ],
+        "problemMatcher": []
+      }
+    ]
   }
 }

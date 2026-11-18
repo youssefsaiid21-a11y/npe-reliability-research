@@ -33,3 +33,7 @@ reproduction.nosync/.venv/bin/python baseline-reproduction/plot_original_observa
 ```
 
 The generated arrays and image stay under the ignored `reproduction.nosync/results/original-observation` directory. They are not the benchmarking paper or its figures.
+
+## Run inside VS Code
+
+Use **Terminal → Run Task** and select a `Thesis:` task, or use the explicit terminal commands above. The tasks are manual and use the tested local Python executable. The Python/debugger editor extension download encountered a Marketplace DNS error; this does not prevent the workspace tasks or command-line runs.
