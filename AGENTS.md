@@ -10,6 +10,10 @@ The remote is public. Do not commit private manuscripts, raw conversations, cred
 
 Current priority: reproduce the authors' matched-model baseline results before running model-misspecification experiments. Start with Random Walk, then SEIRb and Generalized Bass. Keep saved-observation inference, fresh-data calibration, paper-table reproduction and new robustness experiments separate.
 
+## Fixed pretrained NPE only
+
+The user explicitly requires using the authors' pretrained NPE without training or retraining. Do not launch author scripts named NPE_CPU.py or NPE_with_manual_sum_GPU.py; those train networks. Use the released CPU simulator/data generators independently. Do not silently connect different simulator/checkpoint releases or crop/relabel observations to claim paper replication. The 19 November setup found working manuscript CPU generators but no saved weights in that replication archive. See baseline-reproduction/SIMULATION_SETUP.md for the current release-alignment issue.
+
 ## Explicit private-paper restriction
 
 Do not commit or push the benchmarking paper, appendix, paper ZIP archive, or extracted manuscript text. The user explicitly prohibited uploading the benchmarking paper on 2026-11-18. These files remain local, including when arranging VS Code files or preparing reproduction materials. Check the actual Git index before every thesis push; do not rely solely on ignore rules.

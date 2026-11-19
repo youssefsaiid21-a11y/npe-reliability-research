@@ -20,7 +20,7 @@ def verify(data, entry):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--model', choices=['RW', 'SEIRb', 'GB'], default='RW')
+    parser.add_argument('--model', choices=['RW', 'SEIRb', 'GB', 'all'], default='RW')
     parser.add_argument('--offline', action='store_true')
     args = parser.parse_args()
     manifest = json.loads((BASE / 'source-manifest.json').read_text())
@@ -30,9 +30,9 @@ def main():
     records, missing = [], []
     for entry in manifest['files']:
         rel = entry['path']
+        models = list(model_files) if args.model == 'all' else [args.model]
         selected = (rel.startswith('setup_functions/') or rel in {'LICENSE', 'Main.ipynb'}
-                    or rel in model_files[args.model]
-                    or rel.startswith('density_estimators/' + args.model + '_'))
+                    or any(rel in model_files[model] or rel.startswith('density_estimators/' + model + '_') for model in models))
         if not selected:
             continue
         target = RUNTIME / 'upstream' / rel

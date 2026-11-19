@@ -1,0 +1,336 @@
+{
+  "status": "Diagnostic simulator-port pilots, NOT paper replication. Author-release data generation is recorded separately.",
+  "models": {
+    "RW": {
+      "model": "RW",
+      "budget": "100k",
+      "cases": 16,
+      "draws": 2000,
+      "seed": 4242,
+      "source_commit": "d74a866f0476c07e93d786d297f90c0706281c33",
+      "dataset_sha256": "79a9f14209793c4e9a7d80733be45aff0b4df37fa2edec8e64ce9e47ab6e06c8",
+      "status": "fresh-data simulator-port pilot; not paper replication",
+      "support": "author-gaussian",
+      "support_explanation": "Gaussian follows pinned run_training; checkpoint lineage still unverified. Box option is explicitly a different support restriction.",
+      "credible_levels": [
+        0.5,
+        0.75,
+        0.95
+      ],
+      "prior_std_normalizer": [
+        0.4827880263328552,
+        2.4067862033843994,
+        0.12095019966363907,
+        0.12051884084939957
+      ],
+      "metrics": {
+        "normalized_rmse": 0.5320267421814118,
+        "interval_score": 1.8304068561043163,
+        "coverage_fraction_error": 0.03541666666666665,
+        "coverage_errors_by_level": [
+          0.046875,
+          0.03125,
+          0.028124999999999956
+        ],
+        "posterior_contraction": 0.776636004447937
+      },
+      "parameters": [
+        {
+          "name": "Drift",
+          "rmse": 0.06737577573430667,
+          "coverage_95": 0.9375
+        },
+        {
+          "name": "InitS",
+          "rmse": 1.371133237032374,
+          "coverage_95": 0.875
+        },
+        {
+          "name": "NoiseStd",
+          "rmse": 0.1380123630002068,
+          "coverage_95": 1.0
+        },
+        {
+          "name": "MeasStd",
+          "rmse": 0.033478812245773676,
+          "coverage_95": 0.875
+        }
+      ],
+      "limitations": [
+        "NumPy RNG, not Vensim RNG or stream-ID implementation",
+        "Native stochastic equivalence and manuscript selection not certified",
+        "Small pilot; no manuscript matching or pass/fail claim. All parameters scored; manuscript parameter subsets need audit."
+      ],
+      "posterior_array_sha256": "370225bd003ee425a745f09d2fdad50e2962da525159c0f81a3933002961c01e",
+      "structural_parameter_names": [
+        "Drift",
+        "InitS"
+      ],
+      "structural_metrics_uniform_normalizer": {
+        "normalized_rmse": 0.2958361152383714,
+        "interval_score": 1.1785860892783797,
+        "coverage_fraction_error": 0.05624999999999999,
+        "coverage_errors_by_level": [
+          0.125,
+          0.0,
+          0.043749999999999956
+        ],
+        "posterior_contraction": 0.9056551689752814
+      },
+      "metric_definitions": {
+        "metrics": "All parameters, clipped Gaussian standard deviation: pinned public entry-point convention",
+        "structural_metrics_uniform_normalizer": "Exclude noise scales and correlation times; uniform VOC standard deviation. Diagnostic only, not a matched paper comparison."
+      }
+    },
+    "SEIRb": {
+      "model": "SEIRb",
+      "budget": "100k",
+      "cases": 8,
+      "draws": 1000,
+      "seed": 4242,
+      "source_commit": "d74a866f0476c07e93d786d297f90c0706281c33",
+      "dataset_sha256": "6b8cab83df0b5502b793f653faadbc65d6b8bc8fcba6828d5dcfb9bf125b032c",
+      "status": "fresh-data simulator-port pilot; not paper replication",
+      "support": "author-gaussian",
+      "support_explanation": "Gaussian follows pinned run_training; checkpoint lineage still unverified. Box option is explicitly a different support restriction.",
+      "credible_levels": [
+        0.5,
+        0.75,
+        0.95
+      ],
+      "prior_std_normalizer": [
+        0.07238584756851196,
+        0.001687377574853599,
+        4.5496392250061035,
+        0.07191415131092072,
+        0.07238365709781647,
+        23.97158432006836,
+        1.2038273811340332,
+        0.0724719911813736,
+        24.125518798828125,
+        22.8607177734375,
+        93.95265197753906,
+        0.9462986588478088
+      ],
+      "metrics": {
+        "normalized_rmse": 0.7236241269577502,
+        "interval_score": 2.505640425674592,
+        "coverage_fraction_error": 0.045833333333333316,
+        "coverage_errors_by_level": [
+          0.09375,
+          0.04166666666666663,
+          0.002083333333333326
+        ],
+        "posterior_contraction": 0.6238409876823425
+      },
+      "parameters": [
+        {
+          "name": "Death_Measurement_Noise_Scale",
+          "rmse": 0.05634321800057079,
+          "coverage_95": 1.0
+        },
+        {
+          "name": "IFR",
+          "rmse": 0.000833441973401769,
+          "coverage_95": 0.875
+        },
+        {
+          "name": "Noise_Correlation_Time_1",
+          "rmse": 5.05023685013718,
+          "coverage_95": 0.875
+        },
+        {
+          "name": "Noise_Standard_Deviation_1",
+          "rmse": 0.06470118463802343,
+          "coverage_95": 1.0
+        },
+        {
+          "name": "Onset_Measurement_Noise_Scale",
+          "rmse": 0.10252677840126713,
+          "coverage_95": 0.75
+        },
+        {
+          "name": "Patient_Zero_Arrival_Time",
+          "rmse": 3.355230672881575,
+          "coverage_95": 1.0
+        },
+        {
+          "name": "PWRisk_Gamma",
+          "rmse": 0.4183229744871142,
+          "coverage_95": 1.0
+        },
+        {
+          "name": "Recovery_Measurement_Noise_Scale",
+          "rmse": 0.03324123371319247,
+          "coverage_95": 1.0
+        },
+        {
+          "name": "Sensitivity_to_death_Alpha",
+          "rmse": 14.877523540966418,
+          "coverage_95": 1.0
+        },
+        {
+          "name": "Time_to_perceive_Tp",
+          "rmse": 23.909814217555553,
+          "coverage_95": 0.875
+        },
+        {
+          "name": "Time_to_reduce_risk",
+          "rmse": 63.39761171370085,
+          "coverage_95": 1.0
+        },
+        {
+          "name": "Transmission_intensity_Beta",
+          "rmse": 0.6638660444572867,
+          "coverage_95": 1.0
+        }
+      ],
+      "limitations": [
+        "NumPy RNG, not Vensim RNG or stream-ID implementation",
+        "Native stochastic equivalence and manuscript selection not certified",
+        "Small pilot; no manuscript matching or pass/fail claim. All parameters scored; manuscript parameter subsets need audit."
+      ],
+      "posterior_array_sha256": "b9a4c4fdadefb0df65419c7bc9dbe8b9034dca87780e8061fe60e14bb1ad5adf",
+      "structural_parameter_names": [
+        "IFR",
+        "Patient_Zero_Arrival_Time",
+        "PWRisk_Gamma",
+        "Sensitivity_to_death_Alpha",
+        "Time_to_perceive_Tp",
+        "Time_to_reduce_risk",
+        "Transmission_intensity_Beta"
+      ],
+      "structural_metrics_uniform_normalizer": {
+        "normalized_rmse": 0.47979408609599533,
+        "interval_score": 1.620789870302603,
+        "coverage_fraction_error": 0.02261904761904765,
+        "coverage_errors_by_level": [
+          0.0357142857142857,
+          0.017857142857142905,
+          0.014285714285714346
+        ],
+        "posterior_contraction": 0.6769582277224391
+      },
+      "metric_definitions": {
+        "metrics": "All parameters, clipped Gaussian standard deviation: pinned public entry-point convention",
+        "structural_metrics_uniform_normalizer": "Exclude noise scales and correlation times; uniform VOC standard deviation. Diagnostic only, not a matched paper comparison."
+      }
+    },
+    "GB": {
+      "model": "GB",
+      "budget": "100k",
+      "cases": 8,
+      "draws": 2000,
+      "seed": 4242,
+      "source_commit": "d74a866f0476c07e93d786d297f90c0706281c33",
+      "dataset_sha256": "69d41be1989abc67536999d8825f063deb6df66a98ada26c8630710a38eacb89",
+      "status": "fresh-data simulator-port pilot; not paper replication",
+      "support": "author-gaussian",
+      "support_explanation": "Gaussian follows pinned run_training; checkpoint lineage still unverified. Box option is explicitly a different support restriction.",
+      "credible_levels": [
+        0.5,
+        0.75,
+        0.95
+      ],
+      "prior_std_normalizer": [
+        0.24196799099445343,
+        0.002400699770078063,
+        0.060124438256025314,
+        12.166102409362793,
+        0.006012255791574717,
+        0.011976538226008415,
+        0.011945954523980618,
+        0.04835450276732445,
+        2.1940600872039795
+      ],
+      "metrics": {
+        "normalized_rmse": 1.4962121453550417,
+        "interval_score": 8.558769586488006,
+        "coverage_fraction_error": 0.28425925925925927,
+        "coverage_errors_by_level": [
+          0.2361111111111111,
+          0.3055555555555556,
+          0.3111111111111111
+        ],
+        "posterior_contraction": 0.5219744443893433
+      },
+      "parameters": [
+        {
+          "name": "b1",
+          "rmse": 0.45547167719852527,
+          "coverage_95": 0.25
+        },
+        {
+          "name": "b2",
+          "rmse": 0.002810570160309377,
+          "coverage_95": 1.0
+        },
+        {
+          "name": "Imitation q",
+          "rmse": 0.14985266765574093,
+          "coverage_95": 0.5
+        },
+        {
+          "name": "Initial Adopters",
+          "rmse": 13.381176474995748,
+          "coverage_95": 0.875
+        },
+        {
+          "name": "Innovation p",
+          "rmse": 0.008763588531288728,
+          "coverage_95": 0.375
+        },
+        {
+          "name": "SM1",
+          "rmse": 0.008135924952532488,
+          "coverage_95": 0.75
+        },
+        {
+          "name": "SM2",
+          "rmse": 0.01649998590486224,
+          "coverage_95": 0.75
+        },
+        {
+          "name": "sp1",
+          "rmse": 0.0911883965928382,
+          "coverage_95": 0.5
+        },
+        {
+          "name": "tsp1",
+          "rmse": 3.1080498965529895,
+          "coverage_95": 0.75
+        }
+      ],
+      "limitations": [
+        "NumPy RNG, not Vensim RNG or stream-ID implementation",
+        "Native stochastic equivalence and manuscript selection not certified",
+        "Stateful vendor-formula pink-noise expansion is provisional",
+        "Fixed driving-noise stream preserved across cases, but NumPy draws differ from Vensim",
+        "Small pilot; no manuscript matching or pass/fail claim. Public entry-point scoring differs from manuscript scoring."
+      ],
+      "structural_parameter_names": [
+        "b1",
+        "b2",
+        "Imitation q",
+        "Initial Adopters",
+        "Innovation p"
+      ],
+      "structural_metrics_uniform_normalizer": {
+        "normalized_rmse": 1.3538447322086307,
+        "interval_score": 8.839573504688838,
+        "coverage_fraction_error": 0.2833333333333333,
+        "coverage_errors_by_level": [
+          0.22499999999999998,
+          0.275,
+          0.35
+        ],
+        "posterior_contraction": 0.5506182377126941
+      },
+      "metric_definitions": {
+        "metrics": "All parameters, clipped Gaussian standard deviation: pinned public entry-point convention",
+        "structural_metrics_uniform_normalizer": "Exclude noise scales and correlation times; uniform VOC standard deviation. Diagnostic only, not a matched paper comparison."
+      },
+      "posterior_array_sha256": "f98c470a4824b0ba2020b0eeb08768ed7086b5e9bc7e361c4b9212c88407e48a"
+    }
+  }
+}

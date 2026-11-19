@@ -1,0 +1,69 @@
+{
+  "created_utc": "2026-11-19T12:34:26.420519+00:00",
+  "data_generation_status": "Working for all three models using author manuscript CPU generators",
+  "paper_replication_status": "NOT passed: matching pretrained checkpoint release unavailable in downloaded manuscript archive",
+  "training_executed": false,
+  "github_source_commit": "d74a866f0476c07e93d786d297f90c0706281c33",
+  "github_required_artifacts_verified": 29,
+  "manuscript_archive_saved_network_weights": 0,
+  "generations": [
+    {
+      "model": "RW",
+      "cases": 500,
+      "seed": 31,
+      "status": "author CPU data generation succeeded; paper NPE reproduction NOT established",
+      "archive_sha256": "fdfbe324b0dc260651780ed5b9e813b85ac78f35f36a234002cc7ee9aba54f9d",
+      "verified_source_files": 84,
+      "workers": 1,
+      "numerical_threads": 2,
+      "engine": "author PySDTorch, torch CPU backend",
+      "training_executed": false,
+      "selection": "Unmodified author generator defaults, including screening and stratification where enabled",
+      "rows_per_dataset": 101,
+      "checkpoint_alignment": "Unresolved: these are manuscript-release models; available GitHub weights have different configurations",
+      "generation_receipt_sha256": "c595edd515f026dace5608eba7064326d22282bbbb80e145c2d0223f9eed3470",
+      "all_parameters_checked_within_author_bounds": true
+    },
+    {
+      "model": "SEIRb",
+      "cases": 16,
+      "seed": 31,
+      "status": "author CPU data generation succeeded; paper NPE reproduction NOT established",
+      "archive_sha256": "fdfbe324b0dc260651780ed5b9e813b85ac78f35f36a234002cc7ee9aba54f9d",
+      "verified_source_files": 83,
+      "workers": 1,
+      "numerical_threads": 2,
+      "engine": "author PySDTorch, cpp CPU backend",
+      "training_executed": false,
+      "selection": "Unmodified author generator defaults, including screening and stratification where enabled",
+      "rows_per_dataset": 301,
+      "checkpoint_alignment": "Unresolved: these are manuscript-release models; available GitHub weights have different configurations",
+      "generation_receipt_sha256": "0c2ed4682e8981c2a8e6e2624abaf3545cbc69e2a3555c3767e68e75ab363581",
+      "all_parameters_checked_within_author_bounds": true
+    },
+    {
+      "model": "GB",
+      "cases": 16,
+      "seed": 31,
+      "status": "author CPU data generation succeeded; paper NPE reproduction NOT established",
+      "archive_sha256": "fdfbe324b0dc260651780ed5b9e813b85ac78f35f36a234002cc7ee9aba54f9d",
+      "verified_source_files": 85,
+      "workers": 1,
+      "numerical_threads": 2,
+      "engine": "author PySDTorch, torch CPU backend",
+      "training_executed": false,
+      "selection": "Unmodified author generator defaults, including screening and stratification where enabled",
+      "rows_per_dataset": 301,
+      "checkpoint_alignment": "Unresolved: these are manuscript-release models; available GitHub weights have different configurations",
+      "generation_receipt_sha256": "4e2ac1af05c3853be9b71a9927c11dc6c6c262386aa47db281b251d1723affc8",
+      "all_parameters_checked_within_author_bounds": true
+    }
+  ],
+  "random_walk_replay": {
+    "cases": 8,
+    "identical_data_and_parameter_files": 16
+  },
+  "environment_check": "uv pip check: all 136 installed packages compatible",
+  "vensim_required_for_author_cpu_generation": false,
+  "native_vensim_equivalence_status": "Not certified; native validation remains useful"
+}

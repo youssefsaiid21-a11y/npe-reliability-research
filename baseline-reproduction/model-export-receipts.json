@@ -1,0 +1,23 @@
+{
+  "RW": {
+    "package": "RandomWalk3.vpmx",
+    "package_sha256": "49030348c137d6eea3771b5b622f0bd7cf732e9e4d94f40ea161e854ff7e22b3",
+    "exported_model": "RandomWalk3.mdl",
+    "exported_sha256": "1eda2ed64b77f88f4061f840b197245901c74a3d4cb1d70013c49fb16490e122",
+    "export_method": "Vensim PLE 11.0.0 File > Save As, from pinned author package; no equation edits"
+  },
+  "SEIRb": {
+    "package": "SEIRbNosubs.vpmx",
+    "package_sha256": "c5e3f521b5403d527adf41e2c6c753ab5119c46b94f7fcf2f99e62407a37fb64",
+    "exported_model": "SEIRbNosubs.mdl",
+    "exported_sha256": "b8d4bcc74125f65a2124deb4f2c6f5f3173e01501a530f9b30d1c8c78be06094",
+    "export_method": "Vensim PLE 11.0.0 File > Save As, from pinned author package; no equation edits"
+  },
+  "GB": {
+    "package": "GeneralizedBass.vpmx",
+    "package_sha256": "f908dbdd639054a3173f3b18b1e03bd5fe7df26d44697568885347ec92817dec",
+    "exported_model": "GeneralizedBass.mdl",
+    "exported_sha256": "535fd4a7e68403d81f2f5681919628871be053f9efae19e7d8c725c3de49555b",
+    "export_method": "Vensim PLE 11.0.0 File > Save As, from pinned author package; no equation edits"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "status": "sanity checks only; native-engine equivalence pending",
+  "checks": {
+    "RW": {
+      "linear_limit_max_error": 5.3290705182007514e-14,
+      "replay_exact": true,
+      "changed_seed_changes_data": true,
+      "innovation_mean": -0.0007803187454740752,
+      "innovation_std": 0.29602393988725906,
+      "expected_innovation_std": 0.3
+    },
+    "SEIRb": {
+      "population_balance_max_error": 9.313225746154785e-10,
+      "nonnegative_stocks": true,
+      "noiseless_seed_invariance": true
+    },
+    "GB": {
+      "population_balance_max_error": 9.278301149606705e-08,
+      "fixed_driving_noise_preserved": true,
+      "noiseless_pink_multiplier_one": true,
+      "nondecreasing_adopters": true,
+      "adaptation": "Opt-in stateful pink-noise expansion; not native-engine certified"
+    }
+  }
+}

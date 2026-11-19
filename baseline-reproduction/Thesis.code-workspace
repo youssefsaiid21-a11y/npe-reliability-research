@@ -48,6 +48,46 @@
           "${workspaceFolder}/baseline-reproduction/plot_original_observation.py"
         ],
         "problemMatcher": []
+      },
+      {
+        "label": "Thesis: generate author data (no NPE training)",
+        "type": "process",
+        "command": "${workspaceFolder}/reproduction.nosync/.venv/bin/python",
+        "args": [
+          "${workspaceFolder}/baseline-reproduction/run_author_generator.py",
+          "--model",
+          "${input:authorModel}",
+          "--cases",
+          "${input:authorCases}",
+          "--output",
+          "${workspaceFolder}/reproduction.nosync/results/${input:authorRunName}"
+        ],
+        "problemMatcher": []
+      }
+    ],
+    "inputs": [
+      {
+        "id": "authorModel",
+        "type": "pickString",
+        "description": "Original author model",
+        "options": [
+          "RW",
+          "SEIRb",
+          "GB"
+        ],
+        "default": "RW"
+      },
+      {
+        "id": "authorCases",
+        "type": "promptString",
+        "description": "Number of generated evaluation datasets",
+        "default": "16"
+      },
+      {
+        "id": "authorRunName",
+        "type": "promptString",
+        "description": "New run folder name; existing folders are preserved",
+        "default": "author-data-new-run"
       }
     ]
   }

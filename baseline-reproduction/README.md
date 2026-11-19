@@ -1,5 +1,7 @@
 # Matched-model baseline reproduction
 
+**19 November update:** the manuscript authors' CPU generators now run on this Mac for RW, SEIRb and GB. See [the simple simulation setup](SIMULATION_SETUP.md). Data generation is ready; matching the manuscript's trained checkpoints remains unresolved. No NPE training is performed.
+
 Open the [visual HTML guide](codebase-guide.html) in a browser for interactive diagrams and charts, or read the [detailed codebase guide](CODEBASE_GUIDE.md), then [the reproduction plan](REPRODUCTION_PLAN.md). The HTML works offline. Its compact histograms come from our verified local run; regenerate them with `reproduction.nosync/.venv/bin/python baseline-reproduction/refresh_html_charts.py` when the local arrays match the recorded summary hash. Random Walk is the first execution target; SEIRb and Generalized Bass follow after source/runtime validation. Earlier results recorded on another Mac are historical evidence, not results from this setup.
 
 ## Environment

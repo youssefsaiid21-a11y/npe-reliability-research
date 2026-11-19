@@ -1,5 +1,7 @@
 # Reading the thesis codebase
 
+**19 November update:** [SIMULATION_SETUP.md](SIMULATION_SETUP.md) explains the newly working author CPU data generators for all three models. The saved-example harness described below is an earlier stage; fresh data generation now works, while a matched manuscript-checkpoint evaluation remains pending. NPE training is excluded.
+
 This guide explains the code currently on this Mac. It uses our implementation, the authors' public source, and the verified checkpoint metadata. It does not reproduce the private benchmarking paper or its extracts.
 
 Our working program is a checkpoint-compatibility and saved-example inference harness. It loads pretrained Random Walk networks, checks the input features, samples parameter distributions, and records results. We have not yet run the original simulator, retrained a network, or reproduced aggregate paper metrics.

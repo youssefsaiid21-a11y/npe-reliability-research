@@ -19,6 +19,7 @@
 </header>
 <nav aria-label="Page sections"><div><a href="#overview">Big picture</a><a href="#pipeline">Data flow</a><a href="#input">The input</a><a href="#network">The network</a><a href="#results">Our run</a><a href="#prior">Prior mismatch</a><a href="#files">File explorer</a><a href="#next">Next steps</a></div></nav>
 <main>
+<aside class="notice" style="margin-top:20px"><strong>19 November update: fresh data generation now works.</strong><p>The authors’ CPU generators run on this Mac for Random Walk, SEIRb and Generalized Bass. Their manuscript-release models still need matching pretrained weights before we can reproduce the paper’s evaluation. No NPE training runs. <a href="SIMULATION_SETUP.md">Read the simple simulation setup.</a> The saved-example charts below describe the earlier compatibility check.</p></aside>
 <div class="notice"><strong>What the successful run establishes</strong><p>We loaded three trained Random Walk networks and sampled their distributions for the same saved example, using our bounded-support wrapper. We have not run fresh forward simulations, retrained the networks, or reproduced aggregate paper metrics. The private benchmarking paper is not embedded in this page.</p></div>
 
 <section id="overview">

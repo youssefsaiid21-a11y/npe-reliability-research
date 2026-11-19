@@ -2,7 +2,7 @@
 
 An experimental design for evaluating how a frozen neural posterior estimator behaves when a dynamic model differs from the simulator used during training.
 
-**Status: internally reviewed research plan; experiments pending.** This repository contains a research protocol and a runnable sample-size planner. A native CPU saved-example inference rerun is recorded under `baseline-reproduction/`; aggregate replication, new forward simulations, training and misspecification experiments remain pending.
+**Status: author CPU data generation works for all three thesis models; paper replication remains pending.** We generated 500 Random Walk datasets and 16 each for SEIRb and Generalized Bass, paired with known parameters. Small fixed-NPE diagnostics are recorded separately. Matching pretrained weights to the manuscript model release remains unresolved. We will not train or retrain NPE. See [the simple simulation setup](baseline-reproduction/SIMULATION_SETUP.md).
 
 ## Start here
 
