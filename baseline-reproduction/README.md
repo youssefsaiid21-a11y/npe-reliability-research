@@ -1,8 +1,8 @@
-# Matched-model baseline reproduction
+# Our data-generation workspace
 
 **19 November update:** the manuscript authors' CPU generators now run on this Mac for RW, SEIRb and GB. See [the simple simulation setup](SIMULATION_SETUP.md). Data generation is ready; matching the manuscript's trained checkpoints remains unresolved. No NPE training is performed.
 
-Open the [visual HTML guide](codebase-guide.html) in a browser for interactive diagrams and charts, or read the [detailed codebase guide](CODEBASE_GUIDE.md), then [the reproduction plan](REPRODUCTION_PLAN.md). The HTML works offline. Its compact histograms come from our verified local run; regenerate them with `reproduction.nosync/.venv/bin/python baseline-reproduction/refresh_html_charts.py` when the local arrays match the recorded summary hash. Random Walk is the first execution target; SEIRb and Generalized Bass follow after source/runtime validation. Earlier results recorded on another Mac are historical evidence, not results from this setup.
+Start with [what each file does](START_HERE.md), or run `./thesis learn` from the project root. The material below documents the older GitHub checkpoint diagnostics and environment setup. The [older visual guide](codebase-guide.html) and [technical guide](CODEBASE_GUIDE.md) remain references. Read [our current baseline plan](REPRODUCTION_PLAN.md) for the next research steps. The HTML works offline. Its compact histograms come from our verified local run; regenerate them with `reproduction.nosync/.venv/bin/python baseline-reproduction/refresh_html_charts.py` when the local arrays match the recorded summary hash. Random Walk was our first diagnostic target. Our current generators cover all three models; manuscript NPE evaluation remains pending. Earlier results recorded on another Mac are historical evidence, not results from this setup.
 
 ## Environment
 

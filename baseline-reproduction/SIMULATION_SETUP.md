@@ -28,12 +28,12 @@ From the project root, use a **new output directory**:
 ```sh
 reproduction.nosync/.venv/bin/python baseline-reproduction/run_author_generator.py \
   --model RW --cases 500 --seed 31 \
-  --output reproduction.nosync/results/my-new-RW-run
+  --output reproduction.nosync/results/our-new-RW-run
 ```
 
 Change `RW` to `SEIRb` or `GB` for the other models. Start with a small case count when checking a change.
 
-In VS Code, **Terminal → Run Task → Thesis: generate author data (no NPE training)** asks for the model, case count and a new run-folder name.
+Our shorter command is `./thesis generate --model RW --cases 16`. It chooses a fresh run folder automatically. In VS Code, **Terminal → Run Task → Our thesis: generate data** asks for the model, case count and an optional run-folder name. [Our file guide](START_HERE.md) explains the execution path.
 
 Outputs:
 

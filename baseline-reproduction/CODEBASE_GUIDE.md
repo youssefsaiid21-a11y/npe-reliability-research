@@ -1,10 +1,10 @@
-# Reading the thesis codebase
+# Technical reference: earlier GitHub checkpoint diagnostics
 
 **19 November update:** [SIMULATION_SETUP.md](SIMULATION_SETUP.md) explains the newly working author CPU data generators for all three models. The saved-example harness described below is an earlier stage; fresh data generation now works, while a matched manuscript-checkpoint evaluation remains pending. NPE training is excluded.
 
-This guide explains the code currently on this Mac. It uses our implementation, the authors' public source, and the verified checkpoint metadata. It does not reproduce the private benchmarking paper or its extracts.
+For our active file path, start with [START_HERE.md](START_HERE.md). This reference explains the earlier checkpoint-diagnostic code on this Mac. It uses our implementation, the authors' public source, and the verified checkpoint metadata. It does not reproduce the private benchmarking paper or its extracts.
 
-Our working program is a checkpoint-compatibility and saved-example inference harness. It loads pretrained Random Walk networks, checks the input features, samples parameter distributions, and records results. We have not yet run the original simulator, retrained a network, or reproduced aggregate paper metrics.
+The earlier program described here is a checkpoint-compatibility and saved-example inference harness. It loads pretrained Random Walk networks, checks input features, samples parameter distributions and records results. That check did not run forward simulations or reproduce aggregate paper metrics. Our current author data generators are explained in START_HERE.md; no NPE training is part of our workflow.
 
 An important unresolved issue is prior provenance. Our harness imposes a uniform box support reconstructed from the `.voc` bounds. The authors' `run_training()` entry point constructs a Gaussian prior; another upstream experiment path uses a box prior. Matching the limits does not establish that our posterior wrapper matches the training and inference conditions that produced the saved networks.
 

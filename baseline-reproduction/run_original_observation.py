@@ -77,7 +77,7 @@ def main():
         elif not torch.equal(reference_x, x) or not torch.equal(reference_truth, truth):
             raise RuntimeError('Checkpoints do not contain the same original example')
         # The original preprocessing module seeds RNGs when imported. Reset
-        # after imports so a user-supplied seed is honored for every checkpoint.
+        # after imports so our chosen seed is honored for every checkpoint.
         torch.manual_seed(args.seed)
         np.random.seed(args.seed)
         start = time.perf_counter()

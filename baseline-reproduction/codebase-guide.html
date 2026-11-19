@@ -19,7 +19,7 @@
 </header>
 <nav aria-label="Page sections"><div><a href="#overview">Big picture</a><a href="#pipeline">Data flow</a><a href="#input">The input</a><a href="#network">The network</a><a href="#results">Our run</a><a href="#prior">Prior mismatch</a><a href="#files">File explorer</a><a href="#next">Next steps</a></div></nav>
 <main>
-<aside class="notice" style="margin-top:20px"><strong>19 November update: fresh data generation now works.</strong><p>The authors’ CPU generators run on this Mac for Random Walk, SEIRb and Generalized Bass. Their manuscript-release models still need matching pretrained weights before we can reproduce the paper’s evaluation. No NPE training runs. <a href="SIMULATION_SETUP.md">Read the simple simulation setup.</a> The saved-example charts below describe the earlier compatibility check.</p></aside>
+<aside class="notice" style="margin-top:20px"><strong>19 November update: fresh data generation now works.</strong><p>The authors’ CPU generators run on this Mac for Random Walk, SEIRb and Generalized Bass. Their manuscript-release models still need matching pretrained weights before we can reproduce the paper’s evaluation. No NPE training runs. <a href="START_HERE.md">Read our file guide.</a> Run <code>./thesis learn</code> to open our current visual lesson. The saved-example charts below describe the earlier compatibility check.</p></aside>
 <div class="notice"><strong>What the successful run establishes</strong><p>We loaded three trained Random Walk networks and sampled their distributions for the same saved example, using our bounded-support wrapper. We have not run fresh forward simulations, retrained the networks, or reproduced aggregate paper metrics. The private benchmarking paper is not embedded in this page.</p></div>
 
 <section id="overview">
@@ -30,7 +30,7 @@
 </section>
 
 <section id="pipeline">
-<div class="stepnum">02 / Click through the execution path</div><h2>From pinned files to a result you can inspect</h2>
+<div class="stepnum">02 / Click through the execution path</div><h2>From pinned files to a result we can inspect</h2>
 <p>These are separate commands and helpers. There is no single program that automatically performs the entire paper experiment.</p>
 <div class="flow" role="group" aria-label="Pipeline stages">
 <button type="button" class="active" data-stage="0" aria-pressed="true"><span>01</span><strong>Verify source</strong></button><span class="arrow" aria-hidden="true">→</span>
@@ -53,7 +53,7 @@
 
 <section id="network">
 <div class="stepnum">04 / Inside the trained estimator</div><h2>Two observation branches become 16 learned features.</h2>
-<p>These dimensions were inspected in the loaded 100k Random Walk checkpoint. The authors’ class defaults alone would not tell you the saved network’s actual architecture.</p>
+<p>These dimensions were inspected in the loaded 100k Random Walk checkpoint. The authors’ class defaults alone would not tell us the saved network’s actual architecture.</p>
 <div class="network" aria-label="Network architecture diagram">
 <div class="netbox"><strong>Saved input → stored Standardize module</strong><small>(1, 151, 1) → (1, 151, 1); uses checkpoint statistics</small></div>
 <div class="netarrow" aria-hidden="true">↓ split</div>
@@ -126,7 +126,7 @@ const files=[
 ['prepare_source.py','Artifact identity and preparation','source-manifest.json, local caches, optional public downloads.','Verified local upstream files and source-checks.json.','Does not prove scientific equivalence or execute upstream training code.','--offline reports missing files instead of downloading them.'],
 ['inspect_checkpoint.py','Small inspection command','A selected model name and training-budget checkpoint.','Network class, input shape, parameter names and configuration-key names.','No forward simulation or paper-table reproduction.','Supports RW, SEIRb and GB names when their verified assets are available.'],
 ['plot_original_observation.py','Our local plotting command','Current NPZ arrays and JSON summary.','A local four-panel marginal posterior image.','Does not read or copy a benchmarking-paper figure.','The script assumes arrays and summary belong together; it does not enforce the recorded NPZ hash.'],
-['baseline-config.json','Human-readable starting plan','The intended allocation, model order and starting settings.','A record you can review and discuss.','The current runner does not read this file.','Editing its seed or dataset count alone will not change execution.'],
+['baseline-config.json','Human-readable starting plan','The intended allocation, model order and starting settings.','A record we can review and discuss.','The current runner does not read this file.','Editing its seed or dataset count alone will not change execution.'],
 ['target-register.csv','Progress and target checklist','Planned checks and reference-target descriptions.','A list of completed or unresolved stages.','Does not launch experiments or certify paper targets.','A pending target is not a numerical research finding.'],
 ['environment-lock.txt','Exact installed package versions','The completed native environment.','A version list for restoring the tested setup.','Does not lock simulator licensing, hardware or unseen training provenance.','Use the thesis interpreter, rather than the separate general python3 installation.'],
 ['Thesis.code-workspace','VS Code workspace and manual tasks','The project location and local interpreter path.','Tasks for source checks, inference and plotting.','No automatic execution when the folder opens.','Process-based tasks work without the optional Python/debugger editor extension.'],

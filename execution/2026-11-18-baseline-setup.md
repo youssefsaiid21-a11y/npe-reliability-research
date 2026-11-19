@@ -4,7 +4,7 @@ The current priority is to reproduce matched-model NPE baselines for Random Walk
 
 ## Completed setup
 
-- Synchronized the thesis checkout with the existing GitHub remote without overwriting local user work.
+- Synchronized the thesis checkout with the existing GitHub remote without overwriting our local work.
 - Added standing instructions to save completed thesis work to GitHub.
 - Added an explicit prohibition on publishing the benchmarking paper, appendix, ZIP and extracted manuscript text. No such files are tracked; ignore rules were checked.
 - Created a separate `baseline-reproduction` folder with a reproduction plan, target register, pinned source manifest, configuration, verified artifact preparation and CPU checkpoint adapters.

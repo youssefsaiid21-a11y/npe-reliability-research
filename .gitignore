@@ -3,6 +3,7 @@
 !/.gitignore
 !/README.md
 !/AGENTS.md
+!/thesis
 !/baseline-reproduction/
 !/experimental-design/
 !/execution/
@@ -31,7 +32,7 @@
 **/*.npz
 **/*.npy
 
-# Explicit user restriction: benchmarking paper stays local.
+# Our benchmarking paper stays local.
 /Benchmarking_paper/
 /Benchmarking_paper.zip
 **/BenchmarkingEstimationDynamicModels_Final_withAuthors.pdf

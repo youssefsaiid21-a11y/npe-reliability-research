@@ -1,0 +1,9 @@
+#!/bin/sh
+# One entry point. Always use this project's tested Python environment.
+project_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+python="$project_dir/reproduction.nosync/.venv/bin/python"
+if [ ! -x "$python" ]; then
+    echo "The thesis Python environment is missing. See baseline-reproduction/SIMULATION_SETUP.md." >&2
+    exit 1
+fi
+exec "$python" "$project_dir/baseline-reproduction/thesis_cli.py" "$@"

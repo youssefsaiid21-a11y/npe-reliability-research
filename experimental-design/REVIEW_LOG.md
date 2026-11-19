@@ -34,7 +34,7 @@ Approval is limited to design coherence. It is NOT a guarantee that no undiscove
 
 ## Completed verification
 
-- Read local model/reproduction evidence and currently accessible research chats. User directly confirmed RW, SEIRb, and GB; the latest Overleaf source itself was not read.
+- Read local model/reproduction evidence and currently accessible research chats. We confirmed RW, SEIRb, and GB; the latest Overleaf source itself was not read.
 - Ran deterministic planning arithmetic and checked Clopper-Pearson boundary formulas against closed forms, plus minimum/cap/failure branches. Results in planning-checks.json.
 - No actual model simulations, training, posterior inference, checkpoint unpickling, numerical reproduction, or baseline calibration were run.
 
@@ -42,7 +42,7 @@ The study should proceed to source/engineering verification before any productio
 
 ## Simulator-source clarification and HTML overview
 
-The user explicitly required the Rahmandad/Akhavan GitHub simulator. Section 2 now makes its pinned Vensim assets/wrapper/preprocessing/checkpoint pipeline the required baseline, with editable source and runtime checks before alterations. Equal NSeed values alone do not prove aligned noise; a declared independent-noise fallback requires a new allocation pilot and transparent selection/efficiency interpretation.
+We originally selected the Rahmandad/Akhavan GitHub simulator. Section 2 now makes its pinned Vensim assets/wrapper/preprocessing/checkpoint pipeline the required baseline, with editable source and runtime checks before alterations. Equal NSeed values alone do not prove aligned noise; a declared independent-noise fallback requires a new allocation pilot and transparent selection/efficiency interpretation.
 
 Reviewer verdict on the clarification: **NO UNRESOLVED MATERIAL DESIGN FLAWS introduced by this clarification.** This did not validate repository execution or source equivalence.
 

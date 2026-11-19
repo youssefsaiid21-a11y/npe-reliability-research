@@ -1,10 +1,13 @@
 # Experimental design: NPE reliability under model misspecification
 
+**19 November update:** this is our earlier design proposal, not an executable baseline configuration. Our manuscript CPU generators now work for all three models. We are waiting for the manuscript's corresponding pretrained networks; the older public GitHub files are not verified as those networks. We will revisit the conditional perturbations against the manuscript models before running the main study. We do not train NPE. See [our current file guide](../baseline-reproduction/START_HERE.md).
+
+
 Status: REVIEWED DESIGN — independent reviewer found no unresolved material design flaws after three review rounds on 12 November 2026. Execution prerequisites remain open. No model simulations, posterior inference, or training have been executed for this design. See REVIEW_LOG.md for the review history and its limits.
 
 ## 1. Scope and decision
 
-The user confirmed Random Walk (RW), behavioral SEIR (SEIRb), and Generalized Bass (GB) as the three selected models on 12 November. The latest structure is in Overleaf; that document itself has not been read in this session. The local `npe_experiment_vertical.html` independently names the same three models. This protocol addresses the confirmed model set and the existing project aim: reliability of a fixed NPE estimator when the generating mechanism differs from its assumed simulator.
+We confirmed Random Walk (RW), behavioral SEIR (SEIRb), and Generalized Bass (GB) as the three selected models on 12 November. The latest structure is in Overleaf; that document itself has not been read in this session. The local `npe_experiment_vertical.html` independently names the same three models. This protocol addresses the confirmed model set and the existing project aim: reliability of a fixed NPE estimator when the generating mechanism differs from its assumed simulator.
 
 **Recommended core:** one fixed baseline estimator per model; one interpretable misspecification axis per model; baseline plus three departures; paired datasets; parameter-wise uncertainty and recovery. Avoid a large factorial of architectures, sample sizes, perturbations, and training seeds.
 
@@ -14,7 +17,7 @@ These are different departures, not interchangeable units of severity. There is 
 
 ## 2. What must be verified before execution
 
-**Simulator choice explicitly requested by the user:** use Rahmandad/Akhavan's published GitHub simulator assets and accompanying pipeline as the baseline, pinned to the checkpoint-compatible revision. Repository: https://github.com/ali-akhavan89/SD_Neural_Estimation_Benchmarking . The intended baseline path is the model's Vensim asset -> `setup_functions/vensim_simulation_model.py` / `venpy` -> original preprocessing -> compatible frozen checkpoint. Preserve upstream files and put adaptations in separate scripts/model copies.
+**Our original simulator choice:** use Rahmandad/Akhavan's published GitHub simulator assets and accompanying pipeline as the baseline, pinned to the checkpoint-compatible revision. Repository: https://github.com/ali-akhavan89/SD_Neural_Estimation_Benchmarking . The intended baseline path is the model's Vensim asset -> `setup_functions/vensim_simulation_model.py` / `venpy` -> original preprocessing -> compatible frozen checkpoint. Preserve upstream files and put adaptations in separate scripts/model copies.
 
 The repository includes compiled `RandomWalk3.vpmx`, `SEIRbNosubs.vpmx`, and `GeneralizedBass.vpmx`, their VOC configurations, and density estimators. A compiled baseline may be executable without exposing the editable equations needed for structural interventions. Obtain author-supplied editable source or a verified equivalent implementation before changing SEIRb delay shape or Bass imitation curvature. Do not silently replace these with generic textbook models. A port or newly trained estimator is an explicitly approved alternative branch, not the default.
 
@@ -33,9 +36,9 @@ Create a source manifest for EACH model/checkpoint:
 - Resolve GB process factor `xi` versus `1+xi` in the simplified manuscript versus general noise definition, and positive-rate handling. Use executable behavior, not an ambiguous figure, as the implementation specification.
 - The readable older RW model has multiplicative bounded-normal measurement noise. A standard additive linear-Gaussian Kalman likelihood is NOT automatically a valid reference for that model or the compiled checkpoint model.
 - Run checkpoint input-shape, finite-output, parameter-order, prior-support, and deterministic/noise-zero sanity checks. Check normalization near zero means/variances; do not silently replace undefined summaries with zeros.
-- Checkpoint priors, preprocessing, and observation dimensions are authoritative for checkpoint inference. A newly trained transparent model is an alternative study branch, not an unnoticed substitution for the original baseline.
+- Checkpoint priors, preprocessing, and observation dimensions are authoritative for checkpoint inference. We will obtain the matching pretrained estimator rather than train a replacement.
 
-**Source gate:** no main simulation until every item needed for the selected model branch is documented. If a source cannot be matched, request the author's simulator or explicitly choose a new implementation and baseline-trained estimator. User/supervisor approval is needed to change the claimed study scope; it is not needed for routine read-only verification.
+**Source gate:** no main simulation until every item needed for the selected model branch is documented. If a source cannot be matched, we obtain the corresponding simulator and pretrained estimator from the authors. We keep NPE fixed. We agree any change to our study's claimed scope with our supervisor.
 
 ## 3. Data-generating mechanisms
 

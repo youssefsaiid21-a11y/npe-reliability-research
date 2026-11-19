@@ -1,5 +1,8 @@
 # Recommended experiment in practical terms
 
+**19 November update:** this is our earlier design proposal, not an executable baseline configuration. Our manuscript CPU generators now work for all three models. We are waiting for the manuscript's corresponding pretrained networks; the older public GitHub files are not verified as those networks. We will revisit the conditional perturbations against the manuscript models before running the main study. We do not train NPE. See [our current file guide](../baseline-reproduction/START_HERE.md).
+
+
 - Confirmed models: Random Walk, SEIRb, Generalized Bass. Read EXPERIMENTAL_DESIGN.md for the authoritative reviewed protocol.
 - Explicit source requirement: use the Rahmandad/Akhavan GitHub Vensim simulator assets, wrapper, preprocessing and compatible checkpoints as the baseline. Verify runtime/source compatibility; obtain editable equations for structural changes. Do not substitute generic textbook simulators.
 - Use one fixed, baseline-trained NPE estimator per model. Keep parameters, prior, observation grid, preprocessing, and estimator fixed across conditions.

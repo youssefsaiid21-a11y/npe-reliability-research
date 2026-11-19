@@ -15,6 +15,10 @@
   "seed": 42,
   "cpu_threads": 2,
   "aggregate_validation_datasets": 500,
-  "aggregate_status": "blocked pending source-compatible simulator and validation-selection audit",
-  "simulation_policy": "Use author simulator and original preprocessing; no silent textbook substitute."
+  "aggregate_status": "Waiting for corresponding manuscript pretrained NPE and evaluation metadata",
+  "simulation_policy": "Use author simulator and original preprocessing; no silent textbook substitute.",
+  "configuration_role": "Planning notes only; our command-line arguments control execution",
+  "data_generation_status": "Working for RW, SEIRb and GB using manuscript CPU generators",
+  "generation_seed": 31,
+  "npe_training_allowed": false
 }

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Our thesis — start here</title>
+<style>
+:root{--ink:#24344a;--muted:#637184;--green:#167565;--line:#dde5e9;--paper:#fff;--bg:#f4f7f8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 system-ui,-apple-system,sans-serif}main{max-width:980px;margin:auto;padding:52px 24px 80px}h1{font-size:clamp(32px,5vw,47px);line-height:1.15;letter-spacing:-1.5px;margin:12px 0 20px}h2{font-size:25px;line-height:1.3;margin:0 0 14px}h3{font-size:18px;margin:0 0 8px}p{margin:10px 0 16px}.eyebrow{color:var(--green);font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:750}.lead{font-size:20px;max-width:770px}.muted,.small{color:var(--muted)}.small{font-size:14px}.card{padding:26px;border:1px solid var(--line);border-radius:16px;background:white;margin:24px 0}.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:26px 0 12px}.steps button{font:inherit;font-size:15px;text-align:left;padding:17px 14px;border:1px solid var(--line);border-radius:12px;background:white;color:var(--ink);cursor:pointer}.steps button strong{display:block;margin:7px 0}.tag{font-size:11px;font-weight:750;text-transform:uppercase;letter-spacing:.6px;color:var(--green)}.steps button.wait .tag{color:#916317}.steps button.active{border-color:var(--green);box-shadow:0 0 0 1px var(--green);background:#edf7f3}.explanation{background:#edf7f3;border-radius:12px;padding:20px 24px;min-height:106px}.status{border-left:4px solid #b28532;background:#fff8e8;padding:18px 22px;border-radius:8px}.controls{display:flex;flex-wrap:wrap;gap:16px;margin:20px 0}.controls label{display:flex;flex-direction:column;gap:5px;font-size:13px;font-weight:650}select,button{font:inherit}select{background:white;color:var(--ink);border:1px solid #b9c9d0;border-radius:7px;padding:8px 12px;max-width:100%}.chart{display:block;width:100%;height:auto}.chart text{font-family:system-ui,sans-serif;font-size:12px;fill:var(--muted)}.reveal{border:0;border-radius:8px;background:var(--green);color:white;padding:11px 16px;cursor:pointer}button:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #3979bb;outline-offset:4px}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;border-bottom:1px solid var(--line);padding:10px 8px;vertical-align:top}th{font-size:12px;color:var(--muted)}.code{padding:20px;border-radius:12px;background:#213349;color:#e6f0f6;overflow:auto;font:14px/1.8 ui-monospace,monospace}.files{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.files>div{min-width:0}.files code{font-size:13px;overflow-wrap:anywhere}details{border-top:1px solid var(--line);padding:15px 0}summary{cursor:pointer;font-weight:650}code{font-family:ui-monospace,monospace}section{margin-top:42px}li{margin:8px 0}a{color:var(--green)}.quiet{border-top:1px solid var(--line);padding-top:22px;font-size:14px;color:var(--muted)}[hidden]{display:none!important}@media(max-width:650px){main{padding:30px 18px 50px}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.files{grid-template-columns:1fr}.card{padding:20px}.lead{font-size:18px}th,td{padding:9px 5px;font-size:12px}}@media print{body{background:white}main{padding:10px}.card{break-inside:avoid}.reveal{display:none}}
+</style>
+</head>
+<body>
+<main>
+<div class="eyebrow">Our thesis / a simple explanation</div>
+<h1>Follow our code,<br>one file at a time.</h1>
+<p class="lead">Our command calls a coordinator. The coordinator runs the authors’ model code. That code produces known parameters and their matching time series.</p>
+<section class="card">
+<h2>Start with these three files</h2>
+<p>Read them in execution order. We can leave the older network experiments until later.</p>
+<details open><summary>1. thesis — starts Python</summary><p>This is our small launcher. It finds the project’s tested Python environment and starts <code>thesis_cli.py</code>. It contains no model equations.</p></details>
+<details><summary>2. thesis_cli.py — chooses the action</summary><p>This file reads words such as <code>generate</code>, <code>RW</code> and <code>16</code>. Its <code>main()</code> function routes the command. For <code>generate</code>, it calls the coordinator. For <code>learn</code>, it opens this guide.</p><pre class="code">from run_author_generator import main as generate
+
+# We call the coordinator when we choose "generate".
+output = generate([...])</pre><p class="small">This is a shortened example of the command flow. The name <code>generate</code> refers to the coordinator’s <code>main()</code> function.</p></details>
+<details><summary>3. run_author_generator.py — coordinates one run</summary><p>Start at its <code>main()</code> function near the bottom. We can read the flow as four steps:</p><ol><li><code>verify_source()</code> checks the original files.</li><li><code>run_generator()</code> launches the authors’ simulator.</li><li><code>validate_outputs()</code> checks each parameter/data pair.</li><li><code>write_json()</code> records the run and its checks.</li></ol><p>The longer helper functions above <code>main()</code> implement those checks. We do not need their details to understand the flow.</p></details>
+<details><summary>Then: the authors’ script and model equations</summary><p>The coordinator calls the authors’ <code>synth_data_gen_pysdtorch.py</code>. That script chooses parameters, runs the model and saves accepted datasets. The model’s <code>.mdl</code> file contains the actual stocks, flows, constants and noise equations. Their <code>pysdtorch/</code> engine executes those equations over time.</p><p>For Random Walk, <code>State</code> is the accumulating quantity and <code>StateChng</code> is its rate of change. The starting value initializes the state; drift and process noise affect its change.</p></details>
+<details><summary>The guide files — display only</summary><p><code>learning_guide.py</code> reads a few checked examples. <code>learning-guide.html</code> displays this page and draws the graphs. Neither runs NPE or changes the experiment.</p></details>
+</section>
+<h2>What those files help us do</h2>
+<div class="steps" aria-label="The research workflow">
+<button type="button" data-step="0" class="active"><span class="tag">Works now</span><strong>1. Choose parameters</strong>The answers are known.</button>
+<button type="button" data-step="1"><span class="tag">Works now</span><strong>2. Run the model</strong>Generate a time series.</button>
+<button type="button" data-step="2" class="wait"><span class="tag">Waiting for files</span><strong>3. Use their NPE</strong>Estimate the parameters.</button>
+<button type="button" data-step="3" class="wait"><span class="tag">After step 3</span><strong>4. Check the answers</strong>Compare with the truth.</button>
+</div>
+<div id="step-detail" class="explanation" aria-live="polite"></div>
+
+<section>
+<h2>Look at one actual example</h2>
+<p>This graph was generated by the authors’ model code on our Mac. Switch models or examples to see different generated data.</p>
+<div class="card">
+<div class="controls">
+<label>Model<select id="model" aria-label="Model"></select></label>
+<label>Dataset<select id="example" aria-label="Dataset"></select></label>
+<label>Observed series<select id="series" aria-label="Observed series"></select></label>
+</div>
+<p id="story"></p>
+<svg id="chart" class="chart" viewBox="0 0 850 340" role="img" aria-label="Actual generated time series"></svg>
+<p id="example-note" class="small"></p>
+<button type="button" id="reveal" class="reveal" aria-expanded="false" aria-controls="answers">Show the parameters that made this graph</button>
+<div id="answers" hidden>
+<p><strong>These are the known inputs, not NPE estimates.</strong> We chose these values before the model generated the data.</p>
+<div class="tablewrap"><table><thead><tr><th>Parameter</th><th>Known value</th><th>What it means</th></tr></thead><tbody id="parameters"></tbody></table></div>
+</div>
+</div>
+<div class="status"><strong>Where we are now:</strong> steps 1 and 2 work for all three models. We are waiting for the authors’ pretrained networks for this manuscript before doing steps 3 and 4. We will not train NPE.</div>
+</section>
+
+<section>
+<h2>What does “one dataset” mean?</h2>
+<p>One set of known parameters and one matching time series. A dataset may contain several observed series: for example, SEIRb produces onset, recovery and death-rate series.</p>
+<p>To evaluate NPE, we repeat the process over many datasets. NPE receives the numerical time-series values with its required preprocessing; the graph here is a drawing of those numbers. We keep the known parameter values separately to check its answers.</p>
+</section>
+
+<section>
+<h2>The command we use to start</h2>
+<p>In the project’s terminal:</p>
+<pre class="code">./thesis generate --model RW --cases 16</pre>
+<p>This generates 16 Random Walk datasets and their known parameters. Change <code>RW</code> to <code>SEIRb</code> or <code>GB</code> for the other models.</p>
+<pre class="code">./thesis status        # see what is ready
+./thesis show          # read one Random Walk example
+./thesis files         # explain the file execution order
+./thesis learn         # open this explanation</pre>
+<p class="small">Switching examples on this page displays saved data; it does not run another simulation. The command above runs the model and saves a new experiment.</p>
+</section>
+
+<section>
+<h2>Three parts of the project</h2>
+<div class="files">
+<div><h3>Our coordinator</h3><code>run_author_generator.py</code><p class="small">Checks the source files, launches the authors’ generator, checks its outputs and records what ran.</p></div>
+<div><h3>The authors’ models</h3><code>reproduction.nosync/<br>manuscript-replication/</code><p class="small">The actual equations and simulation code. These are the mechanics that produce the graph.</p></div>
+<div><h3>The experiment outputs</h3><code>reproduction.nosync/<br>results/</code><p class="small">One file stores the known parameters. Its paired file stores the time series. A receipt records their identities and settings.</p></div>
+</div>
+<p><strong>The model is not NPE.</strong> The model turns parameters into data. NPE will try to recover parameters from data.</p>
+</section>
+
+<section>
+<h2>After the baseline works</h2>
+<p>We change one assumption in the model, generate new data, and give that data to the <strong>same fixed NPE</strong>. We then measure how its answers and uncertainty change.</p>
+<details><summary>Why can’t we use the older GitHub networks?</summary><p>We have not established that they correspond to our manuscript. We found differences in the model configuration and data format. Using them automatically would mix versions and would not establish reproduction of our paper.</p></details>
+<details><summary>What is a pretrained network?</summary><p>A saved file containing what NPE has already learned. We load it and use it. We do not teach it again.</p></details>
+<details><summary>Why do generated graphs change?</summary><p>Changing parameters changes the model’s behavior. Random noise can also produce different graphs with the same parameters. A random seed makes a particular run repeatable.</p></details>
+<details><summary>Do we need the convolution or LSTM details now?</summary><p>No. Those are internal parts of NPE. First understand how we generate paired parameters and time series, then how we compare NPE’s estimates with the known answers.</p></details>
+</section>
+<p class="quiet">This is an offline research guide built from our local generated examples. The page contains no paper, training operation or upload function.</p>
+</main>
+<script id="examples" type="application/json">{"models":[]}</script>
+<script>
+'use strict';
+const data=JSON.parse(document.getElementById('examples').textContent);
+const steps=[
+'Choose the model’s input values. For Random Walk, these include drift and the starting state. Because we chose the values, we know the correct answers before estimation.',
+'The mechanistic model follows its equations and generates observations over time. Noise makes the observations imperfect. Our data-generation code already does this.',
+'Load the authors’ already-trained NPE and give it the generated observations with the correct preprocessing. It returns plausible parameter values and uncertainty. This stage is waiting for the matching files.',
+'Compare NPE’s estimates with the known inputs. Repeat over many datasets, calculate accuracy and uncertainty scores, and compare the baseline with the paper.'];
+document.querySelectorAll('[data-step]').forEach(button=>button.addEventListener('click',()=>showStep(Number(button.dataset.step))));
+function showStep(i){document.getElementById('step-detail').textContent=steps[i];document.querySelectorAll('[data-step]').forEach(b=>{b.classList.toggle('active',Number(b.dataset.step)===i);b.setAttribute('aria-pressed',String(Number(b.dataset.step)===i));});}
+showStep(0);
+const modelSelect=document.getElementById('model'),exampleSelect=document.getElementById('example'),seriesSelect=document.getElementById('series');
+function options(select,items){select.replaceChildren();items.forEach(([value,label])=>{const o=document.createElement('option');o.value=String(value);o.textContent=label;select.appendChild(o);});}
+function current(){const model=data.models[Number(modelSelect.value)];return {model: model, sample:model.examples[Number(exampleSelect.value)]};}
+function chooseModel(){const model=data.models[Number(modelSelect.value)];options(exampleSelect,model.examples.map((e,i)=>[i,'Dataset '+e.id]));chooseExample();}
+function chooseExample(){const {sample}=current();options(seriesSelect,Object.keys(sample.series).map(s=>[s,s]));document.getElementById('answers').hidden=true;document.getElementById('reveal').setAttribute('aria-expanded','false');document.getElementById('reveal').textContent='Show the parameters that made this graph';draw();}
+const NS='http://www.w3.org/2000/svg';
+function node(tag,attrs,text){const e=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,String(v)));if(text!==undefined)e.textContent=text;return e;}
+function format(value){return new Intl.NumberFormat('en',{maximumSignificantDigits:5}).format(value);}
+function draw(){const {model,sample}=current();const series=seriesSelect.value,values=sample.series[series],times=sample.times;const svg=document.getElementById('chart');svg.replaceChildren();let low=Math.min(...values),high=Math.max(...values);if(low===high){low-=1;high+=1;}const pad=(high-low)*.08;low=low>=0?Math.max(0,low-pad):low-pad;high+=pad;const L=80,R=822,T=24,B=280;const X=t=>L+(t-times[0])/(times[times.length-1]-times[0])*(R-L),Y=v=>B-(v-low)/(high-low)*(B-T);
+for(let i=0;i<=4;i++){const t=times[0]+(times[times.length-1]-times[0])*i/4,v=low+(high-low)*i/4;svg.appendChild(node('line',{x1:L,y1:Y(v),x2:R,y2:Y(v),stroke:'#e3eaed'}));svg.appendChild(node('text',{x:L-10,y:Y(v)+4,'text-anchor':'end'},format(v)));svg.appendChild(node('text',{x:X(t),y:B+23,'text-anchor':'middle'},format(t)));}
+svg.appendChild(node('line',{x1:L,y1:B,x2:R,y2:B,stroke:'#b1c1c9'}));svg.appendChild(node('path',{d:values.map((v,i)=>(i?'L':'M')+X(times[i]).toFixed(2)+' '+Y(v).toFixed(2)).join(' '),fill:'none',stroke:'#167565','stroke-width':2}));svg.appendChild(node('text',{x:(L+R)/2,y:331,'text-anchor':'middle'},'Time'));svg.setAttribute('aria-label',model.name+', dataset '+sample.id+', '+series);document.getElementById('story').textContent=model.story;document.getElementById('example-note').textContent=sample.times.length+' observation times. '+model.cases+' datasets in the selected completed run. Displayed values are generated observations, not estimates.';
+const table=document.getElementById('parameters');table.replaceChildren();sample.parameters.forEach(p=>{const tr=document.createElement('tr');[p.name,format(p.value),p.meaning].forEach(value=>{const td=document.createElement('td');td.textContent=value;tr.appendChild(td);});table.appendChild(tr);});}
+document.getElementById('reveal').addEventListener('click',()=>{const box=document.getElementById('answers');box.hidden=!box.hidden;document.getElementById('reveal').setAttribute('aria-expanded',String(!box.hidden));document.getElementById('reveal').textContent=box.hidden?'Show the parameters that made this graph':'Hide the parameters';});
+modelSelect.addEventListener('change',chooseModel);exampleSelect.addEventListener('change',chooseExample);seriesSelect.addEventListener('change',draw);
+if(data.models.length){options(modelSelect,data.models.map((m,i)=>[i,m.name]));chooseModel();}else{document.getElementById('story').textContent='Run ./thesis learn to load our local examples into this guide.';document.getElementById('reveal').disabled=true;}
+</script>
+</body>
+</html>

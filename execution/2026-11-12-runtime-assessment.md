@@ -2,7 +2,7 @@
 
 ## Requested work and actual status
 
-The user requested execution for one selected model, then installation of Vensim and saving progress to their GitHub. Random Walk was chosen for the first pilot. No new forward simulation, posterior inference, misspecification experiment, or training has run. There are no new scientific results to report yet.
+We planned to execute one selected model, install Vensim and save progress to our GitHub repository. Random Walk was chosen for the first pilot. No new forward simulation, posterior inference, misspecification experiment, or training has run. There are no new scientific results to report yet.
 
 ## Evidence checked
 
@@ -18,7 +18,7 @@ The user requested execution for one selected model, then installation of Vensim
 ## Installation progress
 
 - A Mac Vensim PLE educational-download request was accepted by the official Vensim download center. Newsletter subscription was omitted.
-- The response said download instructions were emailed to the user's university address; it did not return an installer URL.
+- The response said download instructions were emailed to our university address; it did not return an installer URL.
 - Installer download, signature validation, installation and launch verification are pending receipt of that URL. Vensim is NOT installed yet.
 - No paid license or Windows virtual machine has been purchased or configured.
 
@@ -26,7 +26,7 @@ The user requested execution for one selected model, then installation of Vensim
 
 - Initialized local Git and created an explicit tracked-file allowlist for our own protocol, implementation and execution notes.
 - Raw private conversations, unpublished manuscripts, author checkpoint binaries, installers and environments are excluded.
-- GitHub CLI 2.104.0 was installed from the official release after SHA-256 verification. The user completed GitHub's device authorization flow.
+- GitHub CLI 2.104.0 was installed from the official release after SHA-256 verification. We completed GitHub's device authorization flow.
 - Created and verified a private remote: https://github.com/youssefsaiid21-a11y/npe-reliability-research .
 - Initial progress commit `4a485ca9a6a2c75609b557acea12e8ebae29d065` was pushed and its remote main-branch hash matched the local commit.
 

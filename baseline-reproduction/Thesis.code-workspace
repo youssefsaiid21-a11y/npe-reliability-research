@@ -14,53 +14,89 @@
     "search.exclude": {
       "**/reproduction.nosync/**": true,
       "**/reproduction/.venv/**": true
+    },
+    "files.exclude": {
+      "**/baseline-reproduction/CODEBASE_GUIDE.md": true,
+      "**/baseline-reproduction/REPRODUCTION_PLAN.md": true,
+      "**/baseline-reproduction/codebase-guide.html": true,
+      "**/baseline-reproduction/run_original_observation.py": true,
+      "**/baseline-reproduction/checkpoint_runtime.py": true,
+      "**/baseline-reproduction/prepare_source.py": true,
+      "**/baseline-reproduction/inspect_checkpoint.py": true,
+      "**/baseline-reproduction/plot_original_observation.py": true,
+      "**/baseline-reproduction/refresh_html_charts.py": true,
+      "**/baseline-reproduction/generate_baseline_data.py": true,
+      "**/baseline-reproduction/evaluate_baseline.py": true,
+      "**/baseline-reproduction/validate_simulators.py": true,
+      "**/baseline-reproduction/original-observation-summary.json": true,
+      "**/baseline-reproduction/fresh-pilot-summary.json": true,
+      "**/baseline-reproduction/source-manifest.json": true,
+      "**/baseline-reproduction/source-checks.json": true,
+      "**/baseline-reproduction/model-export-receipts.json": true,
+      "**/baseline-reproduction/simulator-sanity-checks.json": true,
+      "**/baseline-reproduction/simulation-environment-summary.json": true,
+      "**/baseline-reproduction/baseline-config.json": true,
+      "**/baseline-reproduction/target-register.csv": true,
+      "**/baseline-reproduction/environment-lock.txt": true,
+      "**/baseline-reproduction/Thesis-reference.code-workspace": true,
+      "**/reproduction.nosync": true,
+      "**/reproduction": true,
+      "**/verification": true,
+      "**/execution": true,
+      "**/experimental-design": true,
+      "**/Benchmarking_paper": true,
+      "**/Benchmarking_paper.zip": true,
+      "**/RESEARCH_CONTEXT.md": true,
+      "**/Random_Walk_Reproduction.md": true,
+      "**/npe_experiment_vertical.html": true,
+      "**/*.pdf": true
     }
   },
   "tasks": {
     "version": "2.0.0",
     "tasks": [
       {
-        "label": "Thesis: verify pinned RW source",
+        "label": "Our thesis: learn the files",
         "type": "process",
-        "command": "${workspaceFolder}/reproduction.nosync/.venv/bin/python",
+        "command": "${workspaceFolder}/thesis",
         "args": [
-          "${workspaceFolder}/baseline-reproduction/prepare_source.py",
-          "--model",
-          "RW",
-          "--offline"
+          "learn"
+        ],
+        "options": {
+          "cwd": "${workspaceFolder}"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Our thesis: explain file roles",
+        "type": "process",
+        "command": "${workspaceFolder}/thesis",
+        "args": [
+          "files"
         ],
         "problemMatcher": []
       },
       {
-        "label": "Thesis: rerun original RW checkpoints",
+        "label": "Our thesis: check progress",
         "type": "process",
-        "command": "${workspaceFolder}/reproduction.nosync/.venv/bin/python",
+        "command": "${workspaceFolder}/thesis",
         "args": [
-          "${workspaceFolder}/baseline-reproduction/run_original_observation.py"
+          "status"
         ],
         "problemMatcher": []
       },
       {
-        "label": "Thesis: plot local checkpoint results",
+        "label": "Our thesis: generate data",
         "type": "process",
-        "command": "${workspaceFolder}/reproduction.nosync/.venv/bin/python",
+        "command": "${workspaceFolder}/thesis",
         "args": [
-          "${workspaceFolder}/baseline-reproduction/plot_original_observation.py"
-        ],
-        "problemMatcher": []
-      },
-      {
-        "label": "Thesis: generate author data (no NPE training)",
-        "type": "process",
-        "command": "${workspaceFolder}/reproduction.nosync/.venv/bin/python",
-        "args": [
-          "${workspaceFolder}/baseline-reproduction/run_author_generator.py",
+          "generate",
           "--model",
           "${input:authorModel}",
           "--cases",
           "${input:authorCases}",
-          "--output",
-          "${workspaceFolder}/reproduction.nosync/results/${input:authorRunName}"
+          "--name",
+          "${input:authorRunName}"
         ],
         "problemMatcher": []
       }
@@ -69,7 +105,7 @@
       {
         "id": "authorModel",
         "type": "pickString",
-        "description": "Original author model",
+        "description": "Our model",
         "options": [
           "RW",
           "SEIRb",
@@ -80,14 +116,14 @@
       {
         "id": "authorCases",
         "type": "promptString",
-        "description": "Number of generated evaluation datasets",
+        "description": "Number of datasets we generate",
         "default": "16"
       },
       {
         "id": "authorRunName",
         "type": "promptString",
-        "description": "New run folder name; existing folders are preserved",
-        "default": "author-data-new-run"
+        "description": "Optional run name; leave blank for an automatic name",
+        "default": ""
       }
     ]
   }
